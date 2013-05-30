@@ -1,4 +1,4 @@
 fs-rfe
 ======
 
-Script, providing all functionality to build your own booking system for Real Flight Events.
+CMS for build your own booking system for virtual Real Flight Event.
