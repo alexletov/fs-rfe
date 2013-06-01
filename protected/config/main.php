@@ -7,9 +7,12 @@
  * Main configuration file.
  */
 return array(
+    'name' => 'Test',
     'defaultController' => 'main',
-    'theme' => 'custom',
-    
+    'theme' => 'classic',
+    'preload' => array (
+        'log'
+    ),
     'import' => array(
         'application.models.*',
         'application.components.*',
@@ -23,6 +26,23 @@ return array(
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
+        ),
+        'urlManager' => array (
+            'urlFormat' => 'path',
+            'showScriptName'=>false,
+            'caseSensitive'=>false,
+        ),
+        'log' => array (
+            'class'  => 'system.logging.CLogRouter',
+            'routes' => array (
+                array (
+                    'class'  => 'CWebLogRoute',
+                    'levels' => 'error, warning, trace, info',
+                ),
+            ),
+        ),
+        'session' => array(
+            'autoStart'=>true,
         ),
     ),
 );
