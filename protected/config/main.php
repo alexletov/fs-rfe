@@ -7,8 +7,10 @@
  * Main configuration file.
  */
 return array(
+    'defaultController' => 'main',
+    'theme' => 'custom',
     
-    'import'=>array(
+    'import' => array(
         'application.models.*',
         'application.components.*',
     ),

@@ -7,16 +7,20 @@
  * Flight model.
  */
 
-class Flight extends CActiveRecord {
-    public function getDbConnection(){
+class Flight extends CActiveRecord
+{
+    public function getDbConnection()
+    {
         return Yii::app()->db;
     }
  
-    public function tableName(){
+    public function tableName()
+    {
          return 'flight';
     }
     
-    public function relations() {
+    public function relations()
+    {
         return array(
             'airport' => array(self::BELONGS_TO, 'Airport', 'id'),
         );

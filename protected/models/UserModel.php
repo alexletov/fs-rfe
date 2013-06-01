@@ -7,12 +7,15 @@
  * User model.
  */
 
-class User extends CActiveRecord {
-    public function getDbConnection(){
+class User extends CActiveRecord
+{
+    public function getDbConnection()
+    {
         return Yii::app()->db;
     }
  
-    public function tableName(){
+    public function tableName()
+    {
          return 'user';
     }
 }

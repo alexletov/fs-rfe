@@ -7,16 +7,20 @@
  * Turnaround model.
  */
 
-class Turnaround extends CActiveRecord {
-    public function getDbConnection(){
+class Turnaround extends CActiveRecord
+{
+    public function getDbConnection()
+    {
         return Yii::app()->db;
     }
  
-    public function tableName(){
+    public function tableName()
+    {
          return 'turnaround';
     }
     
-    public function relations() {
+    public function relations()
+    {
         return array(
             'to' => array(self::HAS_ONE, 'Flight', 'flttoid'),
             'from' => array(self::HAS_ONE, 'Flight', 'fltfromid'),
