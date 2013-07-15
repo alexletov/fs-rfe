@@ -10,16 +10,11 @@ class MainController extends CController
 {
     public function actionIndex()
     {
-        if(Yii::app()->user->getIsGuest())
-        {
-            echo 'Guest';
-        }
         $this->render('main');
     }
     
     public function actionLogin()
     {
-        //error_reporting(0);
         if(!isset($_GET['IVAOTOKEN']))
         {
             $this->redirect(Yii::app()->params['login_url'].'?url='.urlencode($this->createAbsoluteUrl('main/login')));
