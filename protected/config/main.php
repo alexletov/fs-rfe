@@ -20,7 +20,7 @@ return array(
     
     'components' => array(
         'db' => array(
-            'connectionString' => 'mysqli:host=127.0.0.1;dbname=fs-rfe',
+            'connectionString' => 'mysql:host=127.0.0.1;dbname=fs-rfe',
             'tablePrefix' => '',
             'emulatePrepare' => 'true',
             'username' => 'root',
@@ -44,6 +44,11 @@ return array(
         'session' => array(
             'autoStart'=>true,
         ),
+    ),
+    
+    'params' => array(
+        'api_url' => 'http://login.ivao.aero/api.php',
+        'login_url' => 'http://login.ivao.aero/index.php',
     ),
 );
 ?>

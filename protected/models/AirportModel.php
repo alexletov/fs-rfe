@@ -7,8 +7,13 @@
  * Airport model.
  */
 
-class Airport extends CActiveRecord
+class AirportModel extends CActiveRecord
 {
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+    
     public function getDbConnection()
     {
         return Yii::app()->db;

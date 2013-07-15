@@ -7,8 +7,13 @@
  * Turnaround model.
  */
 
-class Turnaround extends CActiveRecord
+class TurnaroundModel extends CActiveRecord
 {
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+    
     public function getDbConnection()
     {
         return Yii::app()->db;
