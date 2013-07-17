@@ -11,7 +11,17 @@ class FlightController extends CController
 {
     public $defaultAction = 'list';
     
-    public function actionList()
+    public function actionArrivals()
+    {
+        $this->_list(1);
+    }
+    
+    public function actionDepartures()
+    {
+        $this->_list(0);
+    }
+    
+    private function _list($dir)
     {
         $id = 0;
         if(isset($_GET['id']))
@@ -28,7 +38,7 @@ class FlightController extends CController
         else {
             $active = true;
         }
-        $this->render('list', array('flights' => $flights, 'active' => $active));
+        $this->render('list', array('flights' => $flights, 'active' => $active, 'dir' => $dir));
     }
 }
 

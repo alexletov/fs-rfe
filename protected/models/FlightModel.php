@@ -28,8 +28,31 @@ class FlightModel extends CActiveRecord
     {
         return array(
             'airport' => array(self::BELONGS_TO, 'AirportModel', 'id'),
-            'turnarounds' => array(self::HAS_MANY, 'TurnaroundModel', 'id'),
         );
+    }
+    
+    public function getTurnaround()
+    {
+        $ta = TurnaroundModel::model()->find('flttoid = :flttoid OR fltfromid = :fltfromid', array(':flttoid' => $this->id, ':fltfromid' => $this->id,));
+        if($ta != null)
+        {
+            $taid = 0;
+            if($this->id == $ta->flttoid)
+            {
+                $taid = $ta->fltfromid;
+            }
+            else
+            {
+                $taid = $ta->flttoid;
+            }
+            return FlightModel::model()->findByPk($taid);
+        }
+        return null;
+    }
+    
+    public function getBooking()
+    {
+        return BookModel::model()->find('flightid = :flightid', array(':flightid' => $this->id,));
     }
 }
 ?>

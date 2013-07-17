@@ -32,10 +32,17 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
                 {
                     foreach($flights as $key => $value)
                     {
+                        if($dir != $value->arrival)
+                        {
+                            continue;
+                        }
             ?>
             <tr>
-                <th><img src="<?php echo $image_url.'/airlines/'.$value->airline.'.gif'; ?>" /></th>
-                <td><?php echo $value->airline.$value->	flightnumber; ?></td>
+                <td>
+                    <a name="<?php echo 'flt'.$value->id; ?>"></a>
+                    <img src="<?php echo $image_url.'/airlines/'.$value->airline.'.gif'; ?>" />
+                </td>
+                <td><?php echo $value->airline.$value->flightnumber; ?></td>
                 <td><?php echo $value->aircraft; ?></td>
                 <td><?php echo $value->gate; ?></td>
                 <td><?php echo $value->fromicao; ?></td>
@@ -43,7 +50,37 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
                 <td><?php echo $value->fromtime; ?></td>
                 <td><?php echo $value->totime; ?></td>
                 <td>Info</td>
-                <td>Turnaround</td>
+                <td>
+                <?php
+                    $ta = $value->getTurnaround();
+                    if($ta != null)
+                    {
+                        $booked = $ta->getBooking();
+                        if($dir == 1)
+                        {
+                            echo '<a href="';
+                            echo Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $ta->airportid)).'#flt'.$ta->id;
+                            
+                        }
+                        else
+                        {
+                            echo '<a href="';
+                            echo Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $ta->airportid)).'#flt'.$ta->id;
+                        }
+                        
+                        echo '" ';
+                        if($booked === null)
+                        {
+                            echo 'class="btn btn-info"';
+                        }
+                        else
+                        {
+                            echo 'class="btn btn-inverse"';
+                        }
+                        echo '>'.$ta->airline.$ta->flightnumber.'</a>';
+                    }
+                ?>
+                </td>
                 <td>Admin</td>
             </tr>
             <?php

@@ -21,9 +21,13 @@ class UserIdentity extends CUserIdentity {
         private function getData($token)
         {
             $user_array = json_decode(file_get_contents(Yii::app()->params['api_url'].'?type=json&token='.$token));
-            if($user_array->result == 1)
+            $umodel = UserModel::model()->findByAttributes(array('vid'=>$user_array->vid));
+            if($umodel === null)
             {
                 $umodel = new UserModel;
+            }
+            if($user_array->result == 1)
+            {                
                 $umodel->vid = $user_array->vid;
                 $umodel->firstname = $user_array->firstname;
                 $umodel->lastname = $user_array->lastname;
