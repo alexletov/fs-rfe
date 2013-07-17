@@ -18,6 +18,7 @@ class FlightController extends CController
         }
         $ac = AirportModel::model()->findByPk($id);
         $flights = $ac->getRelated('flights'); /* Getting flights for this airport. */
+        $this->render('list', array('flights' => flights));
     }
 }
 
