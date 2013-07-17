@@ -9,16 +9,26 @@
 
 class FlightController extends CController
 {
-    public function actionView()
+    public $defaultAction = 'list';
+    
+    public function actionList()
     {
         $id = 0;
-        if(iseet($_GET['id']))
+        if(isset($_GET['id']))
         {
             $id = $_GET['id'];
         }
         $ac = AirportModel::model()->findByPk($id);
-        $flights = $ac->getRelated('flights'); /* Getting flights for this airport. */
-        $this->render('list', array('flights' => flights));
+        $active = $ac->active;
+        $flights = array();
+        if($ac != null)
+        {
+            $flights = $ac->getRelated('flights'); /* Getting flights for this airport. */
+        }
+        else {
+            $active = true;
+        }
+        $this->render('list', array('flights' => $flights, 'active' => $active));
     }
 }
 

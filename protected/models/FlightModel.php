@@ -27,7 +27,8 @@ class FlightModel extends CActiveRecord
     public function relations()
     {
         return array(
-            'airport' => array(self::BELONGS_TO, 'Airport', 'id'),
+            'airport' => array(self::BELONGS_TO, 'AirportModel', 'id'),
+            'turnarounds' => array(self::HAS_MANY, 'TurnaroundModel', 'id'),
         );
     }
 }

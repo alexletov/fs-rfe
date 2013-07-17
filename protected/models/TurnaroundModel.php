@@ -27,8 +27,8 @@ class TurnaroundModel extends CActiveRecord
     public function relations()
     {
         return array(
-            'to' => array(self::HAS_ONE, 'Flight', 'flttoid'),
-            'from' => array(self::HAS_ONE, 'Flight', 'fltfromid'),
+            'to' => array(self::HAS_ONE, 'FlightModel', 'flttoid'),
+            'from' => array(self::HAS_ONE, 'FlightModel', 'fltfromid'),
         );
     }
 }
