@@ -8,6 +8,7 @@
  */
 $theme = Yii::app()->theme->name;
 $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
+$isadmin = UserModel::isAdmin(Yii::app()->user->getId());
 ?><div class="row-fluid">
     <div class="well">
         <table class="table table-hover">
@@ -23,7 +24,14 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
                     <th>Arrival</th>
                     <th>Info</th>
                     <th>Turnaround</th>
-                    <th>Admin</th>
+                    <?php
+                        if($isadmin)
+                        {
+                    ?>
+                        <th>Admin</th>
+                    <?php
+                        };
+                    ?>
                 </tr>
             </thead>
             <tbody>
@@ -79,9 +87,20 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
                         }
                         echo '>'.$ta->airline.$ta->flightnumber.'</a>';
                     }
+                    else
+                    {
+                        echo '<div class="btn btn-danger">NOTAVLBL</div>';
+                    }
                 ?>
                 </td>
-                <td>Admin</td>
+                <?php
+                    if($isadmin)
+                    {
+                ?>
+                    <td>Admin</td>
+                <?php
+                    };
+                ?>                
             </tr>
             <?php
                     };

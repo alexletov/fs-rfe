@@ -12,6 +12,7 @@ class UserIdentity extends CUserIdentity {
         private $token;
         public $errorCode;
         private $_id;
+        private $_admin;
 
         function __construct($token)
         {
@@ -73,6 +74,14 @@ class UserIdentity extends CUserIdentity {
                     $this->setState('ratingatc', $record->ratingatc);
                     $this->setState('ratingpilot', $record->ratingpilot);
                     $this->setState('division', $record->division);
+                    if(AdminModel::model()->find('vid = :vid', array(':vid' => $record->vid,)) != null)
+                    {
+                        $this->_admin = 1;
+                    }
+                    else
+                    {
+                        $this->_admin = 0;
+                    }
                     $this->errorCode=0;
                 }
             return !$this->errorCode;
@@ -81,6 +90,11 @@ class UserIdentity extends CUserIdentity {
         public function getId()
         {
                 return $this->_id;
+        }
+        
+        public function getAdmin()
+        {
+            return $this->_admin;
         }
 }
 ?>

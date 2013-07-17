@@ -33,7 +33,16 @@ class FlightController extends CController
         $flights = array();
         if($ac != null)
         {
-            $flights = $ac->getRelated('flights'); /* Getting flights for this airport. */
+            $criteria = new CDbCriteria;
+            if($dir)
+            {
+                $criteria->order = 'flights.totime ASC';
+            }
+            else
+            {
+                $criteria->order = 'flights.fromtime ASC';
+            }
+            $flights = $ac->getRelated('flights', false, $criteria); /* Getting flights for this airport. */
         }
         else {
             $active = true;

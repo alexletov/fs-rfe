@@ -23,5 +23,18 @@ class UserModel extends CActiveRecord
     {
          return 'user';
     }
+        
+    public static function isAdmin($id)
+    {
+        $user = UserModel::model()->findByPk($id);
+        if($user != null)
+        {
+            return AdminModel::model()->find('vid = :vid', array(':vid' => $user->id,)) != null;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 ?>
