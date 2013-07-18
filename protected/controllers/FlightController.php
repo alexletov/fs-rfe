@@ -49,6 +49,31 @@ class FlightController extends CController
         }
         $this->render('list', array('flights' => $flights, 'active' => $active, 'dir' => $dir));
     }
+    
+    public function actionEvents()
+    {
+        $id = 1;
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+        }
+        $event = EventModel::model()->findByPk($id);
+        if($event != null)
+        {
+            $apts = $event->getRelated('airports', false, array('active' => 1));
+        }
+        $ap = array();
+        $i = 0;
+        if($apts != null)
+        {
+            foreach($apts as $value)
+            {
+                $ap[$i] = $value;
+                $i++;
+            }
+        }
+        $this->render('airports', array('airports' => $ap, 'count' => $i));
+    }
 }
 
 ?>

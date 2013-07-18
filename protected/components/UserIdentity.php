@@ -29,6 +29,7 @@ class UserIdentity extends CUserIdentity {
             }
             if($user_array->result == 1)
             {                
+                $umodel->token = $token;
                 $umodel->vid = $user_array->vid;
                 $umodel->firstname = $user_array->firstname;
                 $umodel->lastname = $user_array->lastname;
@@ -36,7 +37,7 @@ class UserIdentity extends CUserIdentity {
                 $umodel->ratingatc = $user_array->ratingatc;
                 $umodel->ratingpilot = $user_array->ratingpilot;
                 $umodel->division = $user_array->division;
-                $umodel->expire = time() + (7 * 24 * 60 * 60);
+                $umodel->expire = date('Y-m-d', strtotime('+1 week'));
                 $umodel->save();
             }
         }

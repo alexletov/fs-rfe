@@ -104,7 +104,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     }
                     else
                     {
-                        echo '<a href="#" class="dotted-under">Not avlbl</a>';
+                        echo '<div>Not avlbl</div>';
                     }
                 ?>
                 </td>
