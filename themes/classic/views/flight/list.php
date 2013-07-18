@@ -38,6 +38,19 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
 
 <div class="row-fluid">
     <div class="well">
+        <?php
+        if($airport != null)
+            {
+                if($dir)
+                {
+                    echo '<h1>Arrivals: ';
+                }
+                else
+                {
+                    echo '<h1>Departures: ';
+                }
+                echo $airport->name.' ('.$airport->icao.')</h1>';
+            }; ?>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -55,7 +68,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                         if($isadmin)
                         {
                     ?>
-                        <th>Admin</th>
+                    <th>Admin</th>
                     <?php
                         };
                     ?>
@@ -112,7 +125,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td>Admin</td>
+                    <td><a href="#"><i class="icon-remove"></i></a>&nbsp;<a href="#"><i class="icon-minus-sign"></i></a></td>
                 <?php
                     };
                 ?>                
@@ -135,7 +148,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             <table class="pull-right">
                                 <thead>
                                 <tr>
-                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                     <th>Flight</th>
                                     <th>Aircraft</th>
@@ -199,7 +212,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td>Admin</td>
+                    <td>&nbsp;</td>
                 <?php
                     };
                 ?> 

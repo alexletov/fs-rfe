@@ -29,7 +29,7 @@ class UserModel extends CActiveRecord
         $user = UserModel::model()->findByPk($id);
         if($user != null)
         {
-            return AdminModel::model()->find('vid = :vid', array(':vid' => $user->id,)) != null;
+            return AdminModel::model()->find('vid = :vid', array(':vid' => $user->vid,)) != null;
         }
         else
         {

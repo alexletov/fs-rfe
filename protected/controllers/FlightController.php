@@ -29,10 +29,11 @@ class FlightController extends CController
             $id = $_GET['id'];
         }
         $ac = AirportModel::model()->findByPk($id);
-        $active = $ac->active;
+        
         $flights = array();
         if($ac != null)
         {
+            $active = $ac->active;
             $criteria = new CDbCriteria;
             if($dir)
             {
@@ -47,7 +48,7 @@ class FlightController extends CController
         else {
             $active = true;
         }
-        $this->render('list', array('flights' => $flights, 'active' => $active, 'dir' => $dir));
+        $this->render('list', array('airport' => $ac, 'flights' => $flights, 'active' => $active, 'dir' => $dir));
     }
     
     public function actionEvents()
@@ -73,6 +74,29 @@ class FlightController extends CController
             }
         }
         $this->render('airports', array('airports' => $ap, 'count' => $i));
+    }
+    
+    public function actionSlots()
+    {
+        $id = 1;
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+        }
+        $ac = AirportModel::model()->findByPk($id);
+        
+        $slots = array();
+        if($ac != null)
+        {
+            $active = $ac->active;
+            $criteria = new CDbCriteria;
+            $criteria->order = 'slots.time ASC';
+            $slots = $ac->getRelated('slots', false, $criteria); /* Getting flights for this airport. */
+        }
+        else {
+            $active = true;
+        }
+        $this->render('slotlist', array('airport' => $ac, 'slots' => $slots, 'active' => $active));
     }
 }
 

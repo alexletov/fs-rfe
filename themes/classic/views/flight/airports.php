@@ -47,7 +47,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             for($i = 0; $i < $count; $i++)
             {
             ?>
-                <td><h3><i class="icon-resize-full" style="vertical-align: inherit !important; font-size: 22px;" ></i>&nbsp;<a class="booking" href="#">Own flights</a></h3></td>
+                <td><h3><i class="icon-resize-full" style="vertical-align: inherit !important; font-size: 22px;" ></i>&nbsp;<a class="booking" href="<?php echo Yii::app()->createAbsoluteUrl('flight/slots', array('id' => $airports[$i]->id)); ?>">Own flights</a></h3></td>
             <?php
             }
         ?>      

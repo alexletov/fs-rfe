@@ -7,7 +7,7 @@
  * Slot model.
  */
 
-class AdminModel extends CActiveRecord
+class SlotModel extends CActiveRecord
 {
     public static function model($className=__CLASS__)
     {
@@ -27,8 +27,8 @@ class AdminModel extends CActiveRecord
     public function relations()
     {
         return array(
-            'flight' => array(self::BELONGS_TO, 'FlightModel', 'flightid'),
-            'book' => array(self::HAS_ONE, 'SlotReserverModel', 'slotid'),
+            'airport' => array(self::BELONGS_TO, 'AirportModel', 'airportid'),
+            'book' => array(self::HAS_ONE, 'SlotreserveModel', 'slotid'),
         );
     }
 }

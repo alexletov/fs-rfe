@@ -29,6 +29,7 @@ class AirportModel extends CActiveRecord
         return array(
             'event' => array(self::BELONGS_TO, 'EventModel', 'eventid'),
             'flights' => array(self::HAS_MANY, 'FlightModel', 'airportid'),
+            'slots' => array(self::HAS_MANY, 'SlotModel', 'airportid'),
         );
     }
 }
