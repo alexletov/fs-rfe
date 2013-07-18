@@ -125,7 +125,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td><a href="#"><i class="icon-remove"></i></a>&nbsp;<a href="#"><i class="icon-minus-sign"></i></a></td>
+                    <td><a href="#"><i class="icon-remove text-error"></i></a>&nbsp;<a href="#"><i class="icon-minus-sign text-warning"></i></a></td>
                 <?php
                     };
                 ?>                
@@ -143,7 +143,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                         {
                            echo 'error';
                         };
-                        ?> hide warning" id="<?php echo $ta->id.$ta->airline.$ta->flightnumber; ?>">
+                        ?> hide" id="<?php echo $ta->id.$ta->airline.$ta->flightnumber; ?>">
                         <td colspan="10">
                             <table class="pull-right">
                                 <thead>
@@ -161,7 +161,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="warning">
+                                    <tr>
                                         <td></td>
                             <td>
                                 <a name="<?php echo 'taflt'.$ta->id; ?>"></a>

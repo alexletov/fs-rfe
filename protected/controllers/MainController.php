@@ -34,7 +34,7 @@ class MainController extends CController
     public function actionLogout()
     {
         Yii::app()->user->logout();
-        $this->redirect($this->createUrl('main'));
+        $this->redirect($this->createUrl('main/'));
     }
 }
 ?>
