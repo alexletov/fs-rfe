@@ -25,13 +25,13 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             $(id).toggle();
         };
         btnid = id + "btn";
-        if($(btnid).text() == "SHOW")
+        if($(btnid).text() == "Show")
         {
-            $(btnid).text("HIDE");
+            $(btnid).text("Hide");
         }
         else
         {
-            $(btnid).text("SHOW");
+            $(btnid).text("Show");
         };
     };
 </script>
@@ -99,12 +99,12 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     $ta = $value->getTurnaround();
                     if($ta != null)
                     {
-                        echo '<div class="btn btn-info" id="'.$ta->id.$ta->airline.$ta->flightnumber.'btn" 
-                            onclick="showTurnaround(\'#'.$ta->id.$ta->airline.$ta->flightnumber.'\');">SHOW</div>';
+                        echo '<a href="#" class="dotted-under" id="'.$ta->id.$ta->airline.$ta->flightnumber.'btn" 
+                            onclick="showTurnaround(\'#'.$ta->id.$ta->airline.$ta->flightnumber.'\');">Show</a>';
                     }
                     else
                     {
-                        echo '<div class="btn btn-danger">NOTAVLBL</div>';
+                        echo '<a href="#" class="dotted-under">Not avlbl</a>';
                     }
                 ?>
                 </td>

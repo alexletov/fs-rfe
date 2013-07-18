@@ -15,6 +15,7 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/css/bootstrap.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/font/css/whhg.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/css/reset.css'); ?>
+    <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/styles/main.css'); ?>
     <?php echo CHtml::cssFile('http://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic-ext'); ?>    
     <?php echo CHtml::scriptFile('http://code.jquery.com/jquery.js'); ?>
     <?php echo CHtml::scriptFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/js/bootstrap.min.js'); ?>
