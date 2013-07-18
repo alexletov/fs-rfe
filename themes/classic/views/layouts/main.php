@@ -40,9 +40,9 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
         <div class="well ">
             <div>
                 <strong>IVAO Russian division - 2013 </strong><br>
-                <a href="http://twitter.com/#!/IVAORU"><i class="icon-twitter icons-soc"></i></a>
-                <a href="http://www.facebook.com/groups/365423953473360/"><i class="icon-facebook icons-soc"></i></a>
-                <a href="http://vk.com/ivaorus"><i class="icon-vk icons-soc"></i></a>
+                <a href="http://twitter.com/#!/IVAORU" target="_blank"><i class="icon-twitter icons-soc"></i></a>
+                <a href="http://www.facebook.com/groups/365423953473360/" target="_blank"><i class="icon-facebook icons-soc"></i></a>
+                <a href="http://vk.com/ivaorus" target="_blank"><i class="icon-vk icons-soc"></i></a>
             </div>
             <div>
             </div>

@@ -1,13 +1,13 @@
 <?php
 /**
- * @file BookModel.php
+ * @file SlotreserveModel.php
  * 
  * @autor Alex Letov
  * 
- * Book model.
+ * Slot reservation model.
  */
 
-class BookModel extends CActiveRecord
+class SlotreserveModel extends CActiveRecord
 {
     public static function model($className=__CLASS__)
     {
@@ -21,13 +21,13 @@ class BookModel extends CActiveRecord
  
     public function tableName()
     {
-         return 'book';
+         return 'slotreserve';
     }
     
     public function relations()
     {
         return array(
-            'airport' => array(self::BELONGS_TO, 'AirportModel', 'id'),
+            'slot' => array(self::BELONGS_TO, 'SlotModel', 'slotid'),
         );
     }
 }

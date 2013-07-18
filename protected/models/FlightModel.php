@@ -28,6 +28,7 @@ class FlightModel extends CActiveRecord
     {
         return array(
             'airport' => array(self::BELONGS_TO, 'AirportModel', 'id'),
+            'book' => array(self::HAS_ONE, 'BookModel', 'flightid'),
         );
     }
     
