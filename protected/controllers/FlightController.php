@@ -31,10 +31,38 @@ class FlightController extends CController
         $ac = AirportModel::model()->findByPk($id);
         
         $flights = array();
+        
+        $conditions = array();
         if($ac != null)
         {
             $active = $ac->active;
             $criteria = new CDbCriteria;
+            if(isset($_POST['ac']) && !empty($_POST['ac']) && (strlen($_POST['ac']) == 3))
+            {
+                $criteria->addSearchCondition('airline', $_POST['ac']);
+                $conditions['ac'] = $_POST['ac'];
+            }
+            if(isset($_POST['nr']) && !empty($_POST['nr']) && (strlen($_POST['nr']) < 5))
+            {
+                $criteria->addSearchCondition('flightnumber', $_POST['nr']);
+                $conditions['nr'] = $_POST['nr'];
+            }
+            if(isset($_POST['acft']) && !empty($_POST['acft']) && (strlen($_POST['acft']) < 5))
+            {
+                $criteria->addSearchCondition('aircraft', $_POST['acft']);
+                $conditions['acft'] = $_POST['acft'];
+                
+            }
+            if(isset($_POST['to']) && !empty($_POST['to']) && (strlen($_POST['to']) < 5))
+            {
+                $criteria->addSearchCondition('toicao', $_POST['to']);
+                $conditions['to'] = $_POST['to'];
+            }
+            if(isset($_POST['from']) && !empty($_POST['from']) && (strlen($_POST['from']) < 5))
+            {
+                $criteria->addSearchCondition('fromicao', $_POST['from']);
+                $conditions['from'] = $_POST['from'];
+            }
             if($dir)
             {
                 $criteria->order = 'flights.totime ASC';
@@ -48,7 +76,7 @@ class FlightController extends CController
         else {
             $active = true;
         }
-        $this->render('list', array('airport' => $ac, 'flights' => $flights, 'active' => $active, 'dir' => $dir));
+        $this->render('list', array('airport' => $ac, 'flights' => $flights, 'active' => $active, 'dir' => $dir, 'conditions' => $conditions));
     }
     
     public function actionEvents()

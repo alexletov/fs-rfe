@@ -52,6 +52,15 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/removebook'); ?>/id/"+id;
         }
     };
+    
+    
+    function unlinkTurnaround(id1, id2)
+    {
+        if(confirm("Are you sure to unlink flights? Note: all your actions will be logged!"))
+        {
+            document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/unlinkta'); ?>/id1/" + id1 + '/id2/' + id2;
+        }
+    };
     <?php
     };
     ?>
@@ -72,6 +81,17 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 }
                 echo $airport->name.' ('.$airport->icao.')</h1>';
             }; ?>
+        
+        <form action="#" method="post" class="form-inline pull-right">
+            <fieldset>
+                <input class="input-small" type="text" name="ac" id="ac" maxlength="3" size="3" placeholder="Airline" <?php if(isset($conditions['ac'])) { echo 'value="'.$conditions['ac'].'"'; }; ?> />
+                <input class="input-small" type="text" name="nr" id="nr" maxlength="5" size="5" placeholder="Flight number" <?php if(isset($conditions['nr'])) { echo 'value="'.$conditions['nr'].'"'; }; ?> />
+                <input class="input-small" type="text" name="acft" id="acft" maxlength="4" size="4" placeholder="Aircraft" <?php if(isset($conditions['acft'])) { echo 'value="'.$conditions['acft'].'"'; }; ?> />
+                <input class="input-small" type="text" name="from" id="from" maxlength="4" size="4" placeholder="From" <?php if(isset($conditions['from'])) { echo 'value="'.$conditions['from'].'"'; }; ?> />
+                <input class="input-small" type="text" name="to" id="to" maxlength="4" size="4" placeholder="To" <?php if(isset($conditions['to'])) { echo 'value="'.$conditions['to'].'"'; }; ?> />                 
+                <input type="submit" value="Filter!" class="btn" />               
+            </fieldset>
+        </form>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -198,7 +218,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             <td>Info</td>
                             <td>
                             <?php
-                            $booked = $ta->getBooking();
+                            /*$booked = $ta->getBooking();
                             if($dir == 1)
                             {
                                 echo '<a href="';
@@ -220,7 +240,12 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             {
                                 echo 'class="btn btn-inverse"';
                             }
-                            echo '>GO TO</a>';
+                            echo '>GO TO</a>';*/
+                            
+                            if($isadmin)
+                            {
+                                echo '<a href="#" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error"></i></a>';
+                            }
                             ?>
                             </td>
                             

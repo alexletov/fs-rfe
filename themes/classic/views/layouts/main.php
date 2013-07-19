@@ -8,7 +8,8 @@
  */
 $theme = Yii::app()->theme->name;
 $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
-?><html>
+?><!DOCTYPE HTML>
+<html>
 <head>
     <title>Moscow RFE 2013 booking system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
