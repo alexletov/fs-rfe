@@ -27,8 +27,8 @@ class BookModel extends CActiveRecord
     public function relations()
     {
         return array(
-            'flight' => array(self::HAS_ONE, 'FlightModel', 'flightid'),
-            'user' => array(self::HAS_ONE, 'UserModel', 'userid'),
+            'flight' => array(self::BELONGS_TO, 'FlightModel', 'flightid'),
+            'user' => array(self::BELONGS_TO, 'UserModel', 'userid'),
         );
     }
     

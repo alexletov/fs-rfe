@@ -1,8 +1,10 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file falreadybooked.php
+ * 
+ * @autor Alex Letov
+ * 
+ * Flight already booked view.
  */
 ?><div class="row-fluid">
     <div class="well">

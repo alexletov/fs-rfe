@@ -10,6 +10,11 @@ class BookController extends CController
 {
     public function actionBook()
     {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect($this->createAbsoluteUrl('main/login'));
+            return;
+        }
         $flightid = 0;
         if(isset($_GET['flight']))
         {
@@ -28,6 +33,7 @@ class BookController extends CController
             return;
         }
         $ta = $flight->getTurnaround();
+        $this->render('prebook', array('flight' => $flight, 'ta' => $ta));
     }
 }
 ?>

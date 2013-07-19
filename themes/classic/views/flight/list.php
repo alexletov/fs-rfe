@@ -164,7 +164,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     }
                     else
                     {
-                        echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $value->id)).'" class="btn btn-success">Flight details</a>';
+                        echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $value->id)).'" class="btn btn-success">Book</a>';
                     }
                 ?></td>
                 <td>
@@ -251,7 +251,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                                 }
                                 else
                                 {
-                                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $ta->id)).'" class="btn btn-success">Flight details</a>';
+                                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $ta->id)).'" class="btn btn-success">Book</a>';
                                 }
                             ?></td>
                             <td>
