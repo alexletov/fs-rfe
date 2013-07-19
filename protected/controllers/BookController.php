@@ -8,17 +8,13 @@
  */
 class BookController extends CController
 {
-    public function actionBook()
+    public function actionBook($flight)
     {
+        $flightid = $flight;
         if(Yii::app()->user->isGuest)
         {
             $this->redirect($this->createAbsoluteUrl('main/login'));
             return;
-        }
-        $flightid = 0;
-        if(isset($_GET['flight']))
-        {
-            $flightid = $_GET['flight'];
         }
         $flight = FlightModel::model()->findByPk($flightid);
         if($flight === null)

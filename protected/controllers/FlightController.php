@@ -11,23 +11,18 @@ class FlightController extends CController
 {
     public $defaultAction = 'list';
     
-    public function actionArrivals()
+    public function actionArrivals($id)
     {
-        $this->_list(1);
+        $this->_list(1, $id);
     }
     
-    public function actionDepartures()
+    public function actionDepartures($id)
     {
-        $this->_list(0);
+        $this->_list(0, $id);
     }
     
-    private function _list($dir)
+    private function _list($dir, $id)
     {
-        $id = 0;
-        if(isset($_GET['id']))
-        {
-            $id = $_GET['id'];
-        }
         $ac = AirportModel::model()->findByPk($id);
         
         $flights = array();
@@ -79,13 +74,8 @@ class FlightController extends CController
         $this->render('list', array('airport' => $ac, 'flights' => $flights, 'active' => $active, 'dir' => $dir, 'conditions' => $conditions));
     }
     
-    public function actionEvents()
+    public function actionEvents($id)
     {
-        $id = 1;
-        if(isset($_GET['id']))
-        {
-            $id = $_GET['id'];
-        }
         $event = EventModel::model()->findByPk($id);
         if($event != null)
         {
@@ -104,13 +94,8 @@ class FlightController extends CController
         $this->render('airports', array('airports' => $ap, 'count' => $i));
     }
     
-    public function actionSlots()
+    public function actionSlots($id)
     {
-        $id = 1;
-        if(isset($_GET['id']))
-        {
-            $id = $_GET['id'];
-        }
         $ac = AirportModel::model()->findByPk($id);
         
         $slots = array();

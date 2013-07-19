@@ -1,10 +1,10 @@
 <?php
 /**
- * @file list.php
+ * @file airports.php
  * 
  * @autor Alex Letov
  * 
- * Flight list view.
+ * Airports list view.
  */
 $theme = Yii::app()->theme->name;
 $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
