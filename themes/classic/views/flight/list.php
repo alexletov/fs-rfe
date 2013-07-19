@@ -89,7 +89,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <input class="input-small" type="text" name="acft" id="acft" maxlength="4" size="4" placeholder="Aircraft" <?php if(isset($conditions['acft'])) { echo 'value="'.$conditions['acft'].'"'; }; ?> />
                 <?php if($dir) { ?><input class="input-small" type="text" name="from" id="from" maxlength="4" size="4" placeholder="From ICAO" <?php if(isset($conditions['from'])) { echo 'value="'.$conditions['from'].'"'; }; ?> /><?php } else { ?>
                 <input class="input-small" type="text" name="to" id="to" maxlength="4" size="4" placeholder="To ICAO" <?php if(isset($conditions['to'])) { echo 'value="'.$conditions['to'].'"'; }; ?> /> <?php };?>
-                <input type="submit" value="Apply filter." class="btn" />               
+                <input type="submit" value="Apply filter" class="btn" />               
             </fieldset>
         </form>
         <table class="table table-hover">
@@ -127,7 +127,8 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                         }
             ?>
             <tr class="<?php
-                if($value->getBooking() === null)
+                $booking = $value->getBooking();
+                if($booking === null)
                 {
                     echo 'success';
                 }
@@ -147,7 +148,25 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <td><?php echo $value->toicao; ?></td>
                 <td><?php echo $value->fromtime; ?></td>
                 <td><?php echo $value->totime; ?></td>
-                <td>Info</td>
+                <td><?php 
+                    if($booking != null) 
+                    {
+                        $usr = $booking->getRelated('user');
+                        if($usr != null)
+                        {
+                            $name = $usr->vid;
+                        }
+                        else
+                        {
+                            $name = 'Booked details';
+                        }
+                        echo '<a href="'.Yii::app()->createAbsoluteUrl('book/details', array('booking' => $booking->id)).'" class="btn btn-danger">'.$name.'</a>';
+                    }
+                    else
+                    {
+                        echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $value->id)).'" class="btn btn-success">Flight details</a>';
+                    }
+                ?></td>
                 <td>
                 <?php
                     $ta = $value->getTurnaround();
@@ -176,7 +195,8 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     {
                 ?>
                         <tr class="<?php
-                        if($ta->getBooking() === null)
+                        $tabooking = $ta->getBooking();
+                        if($tabooking === null)
                         {
                             echo 'success';
                         }
@@ -215,8 +235,27 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             <td><?php echo $ta->toicao; ?></td>
                             <td><?php echo $ta->fromtime; ?></td>
                             <td><?php echo $ta->totime; ?></td>
-                            <td>Info</td>
+                            <td><?php 
+                                if($tabooking != null) 
+                                {
+                                    $usr = $tabooking->getRelated('user');
+                                    if($usr != null)
+                                    {
+                                        $name = $usr->vid;
+                                    }
+                                    else
+                                    {
+                                        $name = 'Booked details';
+                                    }
+                                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/details', array('booking' => $tabooking->id)).'" class="btn btn-danger">'.$name.'</a>';
+                                }
+                                else
+                                {
+                                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/book', array('flight' => $ta->id)).'" class="btn btn-success">Flight details</a>';
+                                }
+                            ?></td>
                             <td>
+                                
                             <?php
                             /*$booked = $ta->getBooking();
                             if($dir == 1)
