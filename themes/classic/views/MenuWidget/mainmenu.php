@@ -18,4 +18,10 @@ $cn = Yii::app()->controller->uniqueid;
     <li><?php echo CHtml::link('ATC', '#'); ?></li>
     <li class="divider-vertical"></li>
     <li><?php echo CHtml::link('Other', '#'); ?></li>                         
+    <?php if(Yii::app()->user->isGuest)
+    { ?>
+    <li><?php echo CHtml::link('Test Login', Yii::app()->createAbsoluteUrl('main/login')); ?></li>
+    <?php } else { ?>
+    <li><?php echo CHtml::link('Logout ('.Yii::app()->user->firstname.' '.Yii::app()->user->lastname.')', Yii::app()->createAbsoluteUrl('main/logout')); ?></li>
+    <?php }; ?>
 </ul>

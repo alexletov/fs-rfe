@@ -87,9 +87,9 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <input class="input-small" type="text" name="ac" id="ac" maxlength="3" size="3" placeholder="Airline" <?php if(isset($conditions['ac'])) { echo 'value="'.$conditions['ac'].'"'; }; ?> />
                 <input class="input-small" type="text" name="nr" id="nr" maxlength="5" size="5" placeholder="Flight number" <?php if(isset($conditions['nr'])) { echo 'value="'.$conditions['nr'].'"'; }; ?> />
                 <input class="input-small" type="text" name="acft" id="acft" maxlength="4" size="4" placeholder="Aircraft" <?php if(isset($conditions['acft'])) { echo 'value="'.$conditions['acft'].'"'; }; ?> />
-                <input class="input-small" type="text" name="from" id="from" maxlength="4" size="4" placeholder="From" <?php if(isset($conditions['from'])) { echo 'value="'.$conditions['from'].'"'; }; ?> />
-                <input class="input-small" type="text" name="to" id="to" maxlength="4" size="4" placeholder="To" <?php if(isset($conditions['to'])) { echo 'value="'.$conditions['to'].'"'; }; ?> />                 
-                <input type="submit" value="Filter!" class="btn" />               
+                <?php if($dir) { ?><input class="input-small" type="text" name="from" id="from" maxlength="4" size="4" placeholder="From ICAO" <?php if(isset($conditions['from'])) { echo 'value="'.$conditions['from'].'"'; }; ?> /><?php } else { ?>
+                <input class="input-small" type="text" name="to" id="to" maxlength="4" size="4" placeholder="To ICAO" <?php if(isset($conditions['to'])) { echo 'value="'.$conditions['to'].'"'; }; ?> /> <?php };?>
+                <input type="submit" value="Apply filter." class="btn" />               
             </fieldset>
         </form>
         <table class="table table-hover">
