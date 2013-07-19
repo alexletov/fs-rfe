@@ -34,6 +34,27 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             $(btnid).text("Show");
         };
     };
+    <?php if($isadmin)
+    {
+    ?>
+    function deleteFlight(id)
+    {
+        if(confirm("Are you sure to delete flight? Note: all your actions will be logged!"))
+        {
+            document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/removeflight'); ?>/id/"+id;
+        }
+    };
+    
+    function deleteBooking(id)
+    {
+        if(confirm("Are you sure to delete booking? Note: all your actions will be logged!"))
+        {
+            document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/removebook'); ?>/id/"+id;
+        }
+    };
+    <?php
+    };
+    ?>
 </script>
 
 <div class="row-fluid">
@@ -125,7 +146,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td><a href="#"><i class="icon-remove text-error"></i></a>&nbsp;<a href="#"><i class="icon-minus-sign text-warning"></i></a></td>
+                    <td><a href="#" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<a href="#" onclick="deleteBooking(<?php echo $value->id; ?>);"><i class="icon-minus-sign text-warning"></i></a></td>
                 <?php
                     };
                 ?>                
