@@ -83,11 +83,11 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 
                 if($dir)
                 {
-                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $airport->id)).'" class="dotted-under">View Departures</a>';
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $airport->id)).'" class="dotted-under">View Departures <i class="icon-forward"></i></a>';
                 }
                 else
                 {
-                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $airport->id)).'" class="dotted-under">View Arrivals</a>';
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $airport->id)).'" class="dotted-under">View Arrivals <i class="icon-forward"></i></a>';
                 }
             }; ?>
         
@@ -265,34 +265,27 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             ?></td>
                             <td>
                                 
-                            <?php
-                            /*$booked = $ta->getBooking();
-                            if($dir == 1)
-                            {
-                                echo '<a href="';
-                                echo Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $ta->airportid)).'#flt'.$ta->id;
-
-                            }
-                            else
-                            {
-                                echo '<a href="';
-                                echo Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $ta->airportid)).'#flt'.$ta->id;
-                            }
-
-                            echo '" ';
-                            if($booked === null)
-                            {
-                                echo 'class="btn btn-info"';
-                            }
-                            else
-                            {
-                                echo 'class="btn btn-inverse"';
-                            }
-                            echo '>GO TO</a>';*/
-                            
+                            <?php                     
                             if($isadmin)
                             {
-                                echo '<a href="#" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error"></i></a>';
+                                echo '<a href="#" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error"></i></a>&nbsp;';
+                                echo '<a href="#" onclick="deleteFlight('.$ta->id.');"><i class="icon-remove text-error"></i></a>';
+                                if($tabooking != null)
+                                {
+                                    echo '&nbsp;<a href="#" onclick="deleteBooking('.$tabooking->id.');"><i class="icon-minus-sign text-warning"></i></a>';
+                                }
+                                if($dir == 1)
+                                {
+                                    echo '&nbsp;<a href="';
+                                    echo Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $ta->airportid)).'#flt'.$ta->id;
+
+                                }
+                                else
+                                {
+                                    echo '&nbsp;<a href="';
+                                    echo Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $ta->airportid)).'#flt'.$ta->id;
+                                }
+                                echo '"><i class="icon-arrow-right text-success"></i></a>';
                             }
                             ?>
                             </td>
