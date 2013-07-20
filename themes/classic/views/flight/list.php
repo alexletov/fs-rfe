@@ -80,6 +80,15 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     echo '<h1>Departures: ';
                 }
                 echo $airport->name.' ('.$airport->icao.')</h1>';
+                
+                if($dir)
+                {
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/deaprtures', array('id' => $airport->id)).'" class="dotted-under">View Departures</a>';
+                }
+                else
+                {
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $airport->id)).'" class="dotted-under">View Arrivals</a>';
+                }
             }; ?>
         
         <form action="#" method="post" class="form-inline pull-right">
