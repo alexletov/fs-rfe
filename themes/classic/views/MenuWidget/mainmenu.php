@@ -13,7 +13,7 @@ $cn = Yii::app()->controller->uniqueid;
     <li class="divider-vertical"></li>
     <li><?php echo CHtml::link('Pilots briefing', '#'); ?></li>
     <li class="divider-vertical"></li>
-    <li <?php if($cn == 'flight') { ?>class="active" <?php }; ?>><?php echo CHtml::link('<i class="icon-plane text-success" style="vertical-align: inherit !important; font-size: 20px;" ></i>&nbsp; Book your flight', Yii::app()->createAbsoluteUrl('flight/events')); ?></li>
+    <li <?php if($cn == 'flight') { ?>class="active" <?php }; ?>><?php echo CHtml::link('<i class="icon-plane text-success" style="vertical-align: inherit !important; font-size: 20px;" ></i>&nbsp; Book your flight', Yii::app()->createAbsoluteUrl('flight/events', array('id' => 1))); ?></li>
     <li class="divider-vertical"></li>
     <li><?php echo CHtml::link('ATC', '#'); ?></li>
     <li class="divider-vertical"></li>

@@ -32,5 +32,6 @@ class BookModel extends CActiveRecord
         );
     }
     
+    
 }
 ?>

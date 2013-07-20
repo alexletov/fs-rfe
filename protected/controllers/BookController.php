@@ -31,5 +31,12 @@ class BookController extends CController
         $ta = $flight->getTurnaround();
         $this->render('prebook', array('flight' => $flight, 'ta' => $ta));
     }
+    
+    
+    public function actionFlightregister($flight, $ta = 0)
+    {
+        echo $flight.' '.$ta;
+        return;
+    }
 }
 ?>
