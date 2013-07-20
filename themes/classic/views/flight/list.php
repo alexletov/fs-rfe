@@ -83,7 +83,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 
                 if($dir)
                 {
-                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/deaprtures', array('id' => $airport->id)).'" class="dotted-under">View Departures</a>';
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $airport->id)).'" class="dotted-under">View Departures</a>';
                 }
                 else
                 {
