@@ -26,7 +26,16 @@ class AdminlogModel extends CActiveRecord
     
     static public function addLog($success, $msg = '')
     {
-        
+        $log = new AdminlogModel;
+        $log->userid = Yii::app()->user->isGuest ? 0 : Yii::app()->user->getId();
+        $user = UserModel::model()->findByPk($log->userid);
+        $log->vid = ($user == null) ? -1 : $user->vid;
+        $log->isadmin = UserModel::isAdmin(Yii::app()->user->getId());
+        $log->ip = Yii::app()->getRequest()->userHostAddress;
+        $log->url = Yii::app()->getRequest()->requestUri;
+        $log->result = $success;
+        $log->message = $msg;
+        $log->save();
     }
 }
 ?>

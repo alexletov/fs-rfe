@@ -185,7 +185,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td><a href="#" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<a href="#" onclick="deleteBooking(<?php echo $value->id; ?>);"><i class="icon-minus-sign text-warning"></i></a></td>
+                    <td><a href="#" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<?php if($booking != null) { ?><a href="#" onclick="deleteBooking(<?php echo $booking->id; ?>);"><i class="icon-minus-sign text-warning"></i></a><?php ;}; ?></td>
                 <?php
                     };
                 ?>                
