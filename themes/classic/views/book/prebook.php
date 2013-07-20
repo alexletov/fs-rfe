@@ -6,6 +6,9 @@
  * 
  * Prebook view.
  */
+$theme = Yii::app()->theme->name;
+$image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
+$isadmin = UserModel::isAdmin(Yii::app()->user->getId());
 ?><div class="row-fluid">
     <div class="well">
         <table class="table">
@@ -20,12 +23,12 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><?php if($ta == null) { ?>Not available<?php } else { ?>&nbsp;<?php }; ?></td>
+                    <td><?php if($ta == null) { ?><div class="text-error"><i class="icon-lock"></i> Not available</div><?php } else { ?>&nbsp;<?php }; ?></td>
                 </tr>
                 <tr>
                     <td>Flight number</td>
-                    <td><?php echo $flight->airline.$flight->flightnumber; ?></td>
-                    <td <?php if($ta == null) { ?>colspan="8"><?php } else { ?>><?php echo $ta->airline.$ta->flightnumber; }; ?></td>
+                    <td><img src="<?php echo $image_url.'/airlines/'.$flight->airline.'.gif'; ?>" />&nbsp;<?php echo $flight->airline.$flight->flightnumber; ?></td>
+                    <td <?php if($ta == null) { ?>colspan="8"><?php } else { ?>><?php echo '<img src="'.$image_url.'/airlines/'.$ta->airline.'.gif" />&nbsp;'.$ta->airline.$ta->flightnumber; }; ?></td>
                 </tr>
                 
                 <tr>
@@ -40,13 +43,37 @@
                 </tr>
                 <tr>
                     <td>From</td>
-                    <td><?php echo $flight->fromicao ?></td>
-                    <?php if($ta != null) { echo '<td>'.$ta->fromicao.'</td>'; };?>
+                    <td><?php echo $flight->fromicao;
+                    $fromap = AirportdbModel::getByICAO($flight->fromicao);
+                    if($fromap != null)
+                    {
+                        echo ' ('.$fromap->name.', '.$fromap->city.', '.$fromap->country.'&nbsp;<img src="'.$image_url.'/flags/'.strtolower($fromap->country_iso).'.png" />)';
+                    }
+                    ?></td>
+                    <?php if($ta != null) { echo '<td>'.$ta->fromicao;
+                    $fromap = AirportdbModel::getByICAO($ta->fromicao);
+                    if($fromap != null)
+                    {
+                        echo ' ('.$fromap->name.', '.$fromap->city.', '.$fromap->country.'&nbsp;<img src="'.$image_url.'/flags/'.strtolower($fromap->country_iso).'.png" />)';
+                    }
+                    echo '</td>'; };?>
                 </tr>
                 <tr>
                     <td>To</td>
-                    <td><?php echo $flight->toicao ?></td>
-                    <?php if($ta != null) { echo '<td>'.$ta->toicao.'</td>'; };?>
+                    <td><?php echo $flight->toicao;
+                    $toap = AirportdbModel::getByICAO($flight->toicao);
+                    if($toap != null)
+                    {
+                        echo ' ('.$toap->name.', '.$toap->city.', '.$toap->country.'&nbsp;<img src="'.$image_url.'/flags/'.strtolower($toap->country_iso).'.png" />)';
+                    }        
+                    ?></td>
+                    <?php if($ta != null) { echo '<td>'.$ta->toicao;
+                    $toap = AirportdbModel::getByICAO($ta->toicao);
+                    if($toap != null)
+                    {
+                        echo ' ('.$toap->name.', '.$toap->city.', '.$toap->country.'&nbsp;<img src="'.$image_url.'/flags/'.strtolower($toap->country_iso).'.png" />)';
+                    }       
+                    echo '</td>'; };?>
                 </tr>
                 <tr>
                     <td>Departure time</td>

@@ -5,3 +5,11 @@ cursor: pointer;
 color:#001B28;
 text-decoration: none;
  }
+ 
+span.dotted-under, span.dotted-under:hover,
+span.dotted-under:focus{
+border-bottom: 1px dotted #999999;
+cursor: pointer;
+color:#001B28;
+text-decoration: none;
+ }

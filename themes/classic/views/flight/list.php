@@ -172,8 +172,8 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     $ta = $value->getTurnaround();
                     if($ta != null)
                     {
-                        echo '<a href="#" class="dotted-under" id="'.$ta->id.$ta->airline.$ta->flightnumber.'btn" 
-                            onclick="showTurnaround(\'#'.$ta->id.$ta->airline.$ta->flightnumber.'\');">Show</a>';
+                        echo '<span class="dotted-under" id="'.$ta->id.$ta->airline.$ta->flightnumber.'btn" 
+                            onclick="showTurnaround(\'#'.$ta->id.$ta->airline.$ta->flightnumber.'\');">Show</span>';
                     }
                     else
                     {

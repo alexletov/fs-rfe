@@ -23,5 +23,10 @@ class AdminlogModel extends CActiveRecord
     {
          return 'adminlog';
     }
+    
+    static public function addLog($success, $msg = '')
+    {
+        
+    }
 }
 ?>

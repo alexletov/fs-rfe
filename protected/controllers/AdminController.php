@@ -14,7 +14,7 @@ class AdminController extends CController
         $this->render('index');
     }
     
-     public function filters()
+    public function filters()
     {
         return array(
             'AccessControl',

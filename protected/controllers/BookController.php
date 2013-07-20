@@ -11,11 +11,7 @@ class BookController extends CController
     public function actionBook($flight)
     {
         $flightid = $flight;
-        if(Yii::app()->user->isGuest)
-        {
-            $this->redirect($this->createAbsoluteUrl('main/login'));
-            return;
-        }
+        
         $flight = FlightModel::model()->findByPk($flightid);
         if($flight === null)
         {
@@ -35,8 +31,89 @@ class BookController extends CController
     
     public function actionFlightregister($flight, $ta = 0)
     {
-        echo $flight.' '.$ta;
-        return;
+        $mbooking = new BookModel;
+        $f = FlightModel::model()->findByPk($flight);
+        
+        if($f == null)
+        {
+            $this->render('fnotfound');
+            return;
+        }
+        $t = $f->getTurnaround();
+        if(($ta == 1) && ($t != null))
+        {
+            $ta = 1;
+            $tbooking = new BookModel;
+        }
+        else
+        {
+            $ta = 0;
+        }
+        
+        $mbooking->flightid = $f->id;
+        $mbooking->userid = Yii::app()->user->getId();
+        if($ta == 1)
+        {
+            $tbooking->flightid = $t->id;;
+            $tbooking->userid = Yii::app()->user->getId();
+        }
+        
+        $fb = $f->getBooking();
+        if($fb != null)
+        {
+            $this->render('falreadybooked', array('bookid' => $fb->id));
+            return;
+        }
+        else
+        {
+            if($ta == 1)
+            {
+                $tb = $t->getBooking();
+                if($tb != null)
+                {
+                    $this->render('falreadybooked', array('bookid' => $tb->id, 'ta' => 1));
+                    return;
+                }
+            }
+            $success2 = true;
+            $success = $mbooking->save();
+            if(($ta == 1) && ($success))
+            {
+                $success2 = $tbooking->save();
+            }
+            if($success && $success2)
+            {
+                $this->render('fbsuccess', array('ta' => $ta));
+            }
+            else
+            {
+                if($success)
+                {
+                    $this->render('fberror', array('ta' => $ta, 'errta' => 1));
+                }
+                else
+                {
+                    $this->render('fberror', array('ta' => $ta, 'errta' => 0));
+                }
+            }
+        }
+    } 
+    
+    public function filters()
+    {
+        return array(
+            'AccessControl',
+        );
+    }
+    
+    public function filterAccessControl($filterChain)
+    {
+        if(Yii::app()->user->isGuest)
+        {
+            $this->redirect($this->createAbsoluteUrl('main/login'));
+            return;
+        }
+        $filterChain->run();
     }
 }
 ?>

@@ -22,6 +22,11 @@ class AirportdbModel extends CActiveRecord
     public function tableName()
     {
          return 'airportdb';
-    }    
+    }
+    
+    static public function getByICAO($icao)
+    {
+        return AirportdbModel::model()->find('icao = :icao', array(':icao' => $icao));
+    }
 }
 ?>
