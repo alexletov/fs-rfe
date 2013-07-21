@@ -32,6 +32,16 @@ class FlightModel extends CActiveRecord
         );
     }
     
+    public function rules()
+    {
+        return array(
+            array('airportid, fromicao, toicao, fromtime, totime, arrival, aircraft, airline, flightnumber', 'required'),
+            array('fromicao, toicao, aircraft', 'min' => 4, 'max' => 4),
+            array('airline', 'min' => 3, 'max' => 3),
+            array('flightnumber', 'min' => 1, 'max' => 5),
+        );
+    }
+    
     public function getTurnaround()
     {
         $ta = TurnaroundModel::model()->find('flttoid = :flttoid OR fltfromid = :fltfromid', array(':flttoid' => $this->id, ':fltfromid' => $this->id,));
