@@ -315,5 +315,44 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             ?>
             </tbody>
         </table>
+        
+        <?php
+        if($isadmin)
+        {
+        ?>
+        <?php echo CHtml::scriptFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/js/jquery.ui.timepicker.js'); ?>
+        <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/styles/jquery.ui.timepicker.css'); ?>
+        <script type="text/javascript">
+        $(function() {
+            $("#dtime, #atime").timepicker({                
+                hours: {
+                    starts: 0,                
+                    ends: 23                  
+                },
+                minutes: {
+                    starts: 0,                
+                    ends: 55,                 
+                    interval: 5               
+                },
+            });
+        });
+        </script>
+        <form action="<?php echo Yii::app()->createAbsoluteUrl('admin/addflight', array('apt' => $airport->id, 'arrival' => $dir)); ?>" method="post" class="form-inline">
+            <fieldset>
+                <input class="input-small" type="text" name="company" id="company" maxlength="3" placeholder="Airline" />
+                <input class="input-small" type="text" name="flightnumber" id="flightnumber" maxlength="5" placeholder="Flight number" />
+                <input class="input-small" type="text" name="aircraft" id="aircraft" maxlength="4" placeholder="Aircraft" />
+                <input class="input-small" type="text" name="gate" id="gate" maxlength="4" placeholder="Gate" />
+                <input class="input-small" type="text" name="from" id="from" maxlength="4" placeholder="From ICAO" />
+                <input class="input-small" type="text" name="to" id="to" maxlength="4" placeholder="To ICAO" />
+                <input class="input-small" type="text" name="dtime" id="dtime" maxlength="8" placeholder="Departure time" />
+                <input class="input-small" type="text" name="atime" id="atime" maxlength="8" placeholder="Arrival time" />
+                
+                <input type="submit" value="Add" class="btn btn-success" />               
+            </fieldset>
+        </form>
+        <?php
+        };
+        ?>
     </div>
 </div>

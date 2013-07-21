@@ -13,12 +13,14 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
 <head>
     <title>Moscow RFE 2013 booking system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo CHtml::cssFile('http://code.jquery.com/ui/1.10.3/themes/start/jquery-ui.min.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/css/bootstrap.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/font/css/whhg.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/css/reset.css'); ?>
     <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/styles/main.css'); ?>
     <?php echo CHtml::cssFile('http://fonts.googleapis.com/css?family=Roboto:100&subset=latin,cyrillic-ext'); ?>    
     <?php echo CHtml::scriptFile('http://code.jquery.com/jquery.js'); ?>
+    <?php echo CHtml::scriptFile('http://code.jquery.com/ui/1.10.3/jquery-ui.min.js'); ?>
     <?php echo CHtml::scriptFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/bootstrap/js/bootstrap.min.js'); ?>
 </head>
 <body>
