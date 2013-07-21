@@ -39,6 +39,40 @@ class AdminController extends CController
         }        
     }
     
+    public function actionRemoveflight($id)
+    {
+        $flight = FlightModel::model()->findByPk($id);
+        if($flight != null)
+        {
+            $fltdetails = ' airportid: '.$flight->airportid.
+                ', fromicao: '.$flight->fromicao.
+                ', toicao: '.$flight->toicao.
+                ', fromtime: '.$flight->fromtime.
+                ', totime: '.$flight->totime.
+                ', arrival: '.$flight->arrival.
+                ', aircraft: '.$flight->aircraft.
+                ', gate: '.$flight->gate.
+                ', airline: '.$flight->airline.
+                ', flightnumber: '.$flight->flightnumber;
+            
+            if($flight->delete())
+            {
+                AdminlogModel::addLog('success', 'Flight '.$id.' removed from database. Flight details: '.$fltdetails);
+                $this->render('fdsuccess', array('id' => $id));
+            }
+            else
+            {
+                AdminlogModel::addLog('error', 'Flight '.$id.' wasn\'t removed from database. database error. Flight details: '.$fltdetails);
+                $this->render('fderror', array('id' => $id, 'type' => 'db'));
+            }
+        }
+        else
+        {
+            AdminlogModel::addLog('error', 'Flight '.$id.' not found in database.');
+            $this->render('fderror', array('id' => $id, 'type' => 'nf'));
+        }        
+    }
+    
     public function actionAddflight($apt, $arrival)
     {
         if(!(isset($_POST['from']) || isset($_POST['to']) || isset($_POST['dtime'])
