@@ -15,6 +15,10 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
     }
 </style>
 <script type="text/javascript">
+    $(function () {
+        $("a[data-toggle='tooltip']").tooltip();
+    });
+    
     function showTurnaround(id) {
         if($(id).hasClass("hide"))
         {
@@ -63,7 +67,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
     };
     <?php
     };
-    ?>
+    ?>    
 </script>
 
 <div class="row-fluid">
@@ -194,7 +198,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td><a href="#" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<?php if($booking != null) { ?><a href="#" onclick="deleteBooking(<?php echo $booking->id; ?>);"><i class="icon-minus-sign text-warning"></i></a><?php ;}; ?></td>
+                    <td><a href="#" data-toggle="tooltip" title="Delete flight" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<?php if($booking != null) { ?><a href="#" data-toggle="tooltip" title="Delete booking" onclick="deleteBooking(<?php echo $booking->id; ?>);"><i class="icon-minus-sign text-warning"></i></a><?php ;}; ?></td>
                 <?php
                     };
                 ?>                
@@ -268,21 +272,21 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             <?php                     
                             if($isadmin)
                             {
-                                echo '<a href="#" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error"></i></a>&nbsp;';
-                                echo '<a href="#" onclick="deleteFlight('.$ta->id.');"><i class="icon-remove text-error"></i></a>';
+                                echo '<a href="#" data-toggle="tooltip" title="Unlink turnaround" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error tooltip-link"></i></a>&nbsp;';
+                                echo '<a href="#" data-toggle="tooltip" title="Delete flight" onclick="deleteFlight('.$ta->id.');"><i class="icon-remove text-error"></i></a>';
                                 if($tabooking != null)
                                 {
-                                    echo '&nbsp;<a href="#" onclick="deleteBooking('.$tabooking->id.');"><i class="icon-minus-sign text-warning"></i></a>';
+                                    echo '&nbsp;<a href="#" data-toggle="tooltip" title="Delete booking" onclick="deleteBooking('.$tabooking->id.');"><i class="icon-minus-sign text-warning"></i></a>';
                                 }
                                 if($dir == 1)
                                 {
-                                    echo '&nbsp;<a href="';
+                                    echo '&nbsp;<a data-toggle="tooltip" title="Go to flight" href="';
                                     echo Yii::app()->createAbsoluteUrl('flight/departures', array('id' => $ta->airportid)).'#flt'.$ta->id;
 
                                 }
                                 else
                                 {
-                                    echo '&nbsp;<a href="';
+                                    echo '&nbsp;<a data-toggle="tooltip" title="Go to flight" href="';
                                     echo Yii::app()->createAbsoluteUrl('flight/arrivals', array('id' => $ta->airportid)).'#flt'.$ta->id;
                                 }
                                 echo '"><i class="icon-arrow-right text-success"></i></a>';
