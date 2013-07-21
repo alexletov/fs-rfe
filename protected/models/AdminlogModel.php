@@ -35,6 +35,7 @@ class AdminlogModel extends CActiveRecord
         $log->url = Yii::app()->getRequest()->requestUri;
         $log->result = $success;
         $log->message = $msg;
+        $log->time = new CDbExpression('NOW()');;        
         $log->save();
     }
 }

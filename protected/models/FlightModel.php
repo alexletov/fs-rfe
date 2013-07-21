@@ -36,9 +36,10 @@ class FlightModel extends CActiveRecord
     {
         return array(
             array('airportid, fromicao, toicao, fromtime, totime, arrival, aircraft, airline, flightnumber', 'required'),
-            array('fromicao, toicao, aircraft', 'min' => 4, 'max' => 4),
-            array('airline', 'min' => 3, 'max' => 3),
-            array('flightnumber', 'min' => 1, 'max' => 5),
+            array('fromicao, toicao, aircraft', 'length', 'min' => 4, 'max' => 4),
+            array('airline', 'length', 'min' => 3, 'max' => 3),
+            array('flightnumber', 'length', 'min' => 1, 'max' => 5),
+            array('gate', 'length', 'min' => 0, 'max' => 5),
         );
     }
     

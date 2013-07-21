@@ -348,7 +348,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <input class="input-small" type="text" name="dtime" id="dtime" maxlength="8" placeholder="Dep time" />
                 <input class="input-small" type="text" name="atime" id="atime" maxlength="8" placeholder="Arr time" />
                 <button type="submit" class="btn btn-success">
-                    <i class="icon-ok"></i>
+                    <i class="icon-ok"></i>&nbsp;Add
                 </button>
             </fieldset>
         </form>
