@@ -32,6 +32,11 @@ class BookModel extends CActiveRecord
         );
     }
     
-    
+    public function rules()
+    {
+        return array(
+            array('userid, flightid', 'required'),            
+        );
+    }
 }
 ?>

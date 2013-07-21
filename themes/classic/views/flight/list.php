@@ -190,7 +190,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     }
                     else
                     {
-                        echo '<div>Not avlbl</div>';
+                        echo '<div>Not available</div>';
                     }
                 ?>
                 </td>
@@ -339,16 +339,17 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
         </script>
         <form action="<?php echo Yii::app()->createAbsoluteUrl('admin/addflight', array('apt' => $airport->id, 'arrival' => $dir)); ?>" method="post" class="form-inline">
             <fieldset>
-                <input class="input-small" type="text" name="company" id="company" maxlength="3" placeholder="Airline" />
+                <input class="input-mini" type="text" name="company" id="company" maxlength="3" placeholder="Airline" />
                 <input class="input-small" type="text" name="flightnumber" id="flightnumber" maxlength="5" placeholder="Flight number" />
-                <input class="input-small" type="text" name="aircraft" id="aircraft" maxlength="4" placeholder="Aircraft" />
-                <input class="input-small" type="text" name="gate" id="gate" maxlength="4" placeholder="Gate" />
-                <input class="input-small" type="text" name="from" id="from" maxlength="4" placeholder="From ICAO" />
-                <input class="input-small" type="text" name="to" id="to" maxlength="4" placeholder="To ICAO" />
-                <input class="input-small" type="text" name="dtime" id="dtime" maxlength="8" placeholder="Departure time" />
-                <input class="input-small" type="text" name="atime" id="atime" maxlength="8" placeholder="Arrival time" />
-                
-                <input type="submit" value="Add" class="btn btn-success" />               
+                <input class="input-mini" type="text" name="aircraft" id="aircraft" maxlength="4" placeholder="Aircraft" />
+                <input class="input-mini" type="text" name="gate" id="gate" maxlength="4" placeholder="Gate" />
+                <input class="input-mini" type="text" name="from" id="from" maxlength="4" placeholder="Dep ICAO" />
+                <input class="input-mini" type="text" name="to" id="to" maxlength="4" placeholder="Arr ICAO" />
+                <input class="input-small" type="text" name="dtime" id="dtime" maxlength="8" placeholder="Dep time" />
+                <input class="input-small" type="text" name="atime" id="atime" maxlength="8" placeholder="Arr time" />
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-ok"></i>
+                </button>
             </fieldset>
         </form>
         <?php
