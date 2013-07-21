@@ -198,7 +198,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     if($isadmin)
                     {
                 ?>
-                    <td><a href="#" data-toggle="tooltip" title="Delete flight" onclick="deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<?php if($booking != null) { ?><a href="#" data-toggle="tooltip" title="Delete booking" onclick="deleteBooking(<?php echo $booking->id; ?>);"><i class="icon-minus-sign text-warning"></i></a><?php ;}; ?></td>
+                    <td><a data-toggle="tooltip" title="Delete flight" href="javascript:deleteFlight(<?php echo $value->id; ?>);"><i class="icon-remove text-error"></i></a>&nbsp;<?php if($booking != null) { ?><a data-toggle="tooltip" title="Delete booking" href="javascript:deleteBooking(<?php echo $booking->id; ?>);"><i class="icon-minus-sign text-warning"></i></a><?php ;}; ?></td>
                 <?php
                     };
                 ?>                
@@ -272,11 +272,11 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                             <?php                     
                             if($isadmin)
                             {
-                                echo '<a href="#" data-toggle="tooltip" title="Unlink turnaround" onclick="unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error tooltip-link"></i></a>&nbsp;';
-                                echo '<a href="#" data-toggle="tooltip" title="Delete flight" onclick="deleteFlight('.$ta->id.');"><i class="icon-remove text-error"></i></a>';
+                                echo '<a data-toggle="tooltip" title="Unlink turnaround" href="javascript:unlinkTurnaround( '.$value->id.', '.$ta->id.');"><i class="icon-resize-full text-error tooltip-link"></i></a>&nbsp;';
+                                echo '<a data-toggle="tooltip" title="Delete flight" href="javascript:deleteFlight('.$ta->id.');"><i class="icon-remove text-error"></i></a>';
                                 if($tabooking != null)
                                 {
-                                    echo '&nbsp;<a href="#" data-toggle="tooltip" title="Delete booking" onclick="deleteBooking('.$tabooking->id.');"><i class="icon-minus-sign text-warning"></i></a>';
+                                    echo '&nbsp;<a data-toggle="tooltip" title="Delete booking" href="javascript:deleteBooking('.$tabooking->id.');"><i class="icon-minus-sign text-warning"></i></a>';
                                 }
                                 if($dir == 1)
                                 {

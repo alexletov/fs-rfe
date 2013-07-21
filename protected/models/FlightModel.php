@@ -62,6 +62,11 @@ class FlightModel extends CActiveRecord
         return null;
     }
     
+    public function getTurnaroundModel()
+    {
+        return TurnaroundModel::model()->find('flttoid = :flttoid OR fltfromid = :fltfromid', array(':flttoid' => $this->id, ':fltfromid' => $this->id,));
+    }
+    
     public function getBooking()
     {
         return BookModel::model()->find('flightid = :flightid', array(':flightid' => $this->id,));

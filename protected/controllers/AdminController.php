@@ -172,6 +172,98 @@ class AdminController extends CController
         }        
     }
     
+    public function actionUnlinkta($id1, $id2)
+    {
+        $flight1 = FlightModel::model()->findByPk($id1);
+        $flight2 = FlightModel::model()->findByPk($id2);
+        if($flight1 === null)
+        {
+            AdminlogModel::addLog('error', 'Flight not found: '.$id1);
+            $this->render('fanfound');
+            return;
+        }
+        
+        if($flight2 === null)
+        {
+            AdminlogModel::addLog('error', 'Flight not found: '.$id1);
+            $this->render('fanfound');
+            return;
+        }
+        $fltdetails1 = 'id: '.$flight1->id.
+                ' airportid: '.$flight1->airportid.
+                ', fromicao: '.$flight1->fromicao.
+                ', toicao: '.$flight1->toicao.
+                ', fromtime: '.$flight1->fromtime.
+                ', totime: '.$flight1->totime.
+                ', arrival: '.$flight1->arrival.
+                ', aircraft: '.$flight1->aircraft.
+                ', gate: '.$flight1->gate.
+                ', airline: '.$flight1->airline.
+                ', flightnumber: '.$flight1->flightnumber;
+        
+        $fltdetails2 = 'id: '.$flight2->id.
+                ' airportid: '.$flight2->airportid.
+                ', fromicao: '.$flight2->fromicao.
+                ', toicao: '.$flight2->toicao.
+                ', fromtime: '.$flight2->fromtime.
+                ', totime: '.$flight2->totime.
+                ', arrival: '.$flight2->arrival.
+                ', aircraft: '.$flight2->aircraft.
+                ', gate: '.$flight2->gate.
+                ', airline: '.$flight2->airline.
+                ', flightnumber: '.$flight2->flightnumber;
+        
+        $ta = $flight1->getTurnaround();
+        
+        if($ta === null)
+        {
+            AdminlogModel::addLog('error', 'Turnaround not found: flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('tanfound');
+            return;
+        }
+        
+        $ta1 = $flight1->getTurnaroundModel();
+        $ta2 = $flight2->getTurnaroundModel();
+        
+        if($ta1 === null)
+        {
+            AdminlogModel::addLog('error', 'Turnaround record for flight 1 not found: flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('tamnfound');
+            return;
+        }
+        
+        if($ta2 === null)
+        {
+            AdminlogModel::addLog('error', 'Turnaround record for flight 2 not found: flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('tamnfound');
+            return;
+        }
+        
+        if(($ta->id != $flight2->id) || ($ta1->id != $ta2->id))
+        {
+            AdminlogModel::addLog('error', 'This turnaround not for flight 1 and flight 2: flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('tanerror');
+            return;
+        }
+        $taid = $ta1->id;
+        if($ta1->delete())
+        {
+            AdminlogModel::addLog('success', 'Turnaround (id: '.$taid.') deleted: flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('tadsuccess');
+        }
+        else
+        {
+            AdminlogModel::addLog('success', 'Turnaround wasn\'t deleted. Database error. Flights('.$id1.', '.$id2.
+                    '). Flight details 1: '.$fltdetails1.'. Flight details 2: '.$fltdetails2);
+            $this->render('taderror');
+        }
+    }
+    
     public function filters()
     {
         return array(
