@@ -97,7 +97,27 @@ class BookController extends CController
                 }
             }
         }
-    } 
+    }
+    
+    public function actionDetails($booking)
+    {
+        $book = BookModel::model()->findByPk($booking);
+        if($book === null)
+        {
+            $this->render('bnotfound');
+            return;
+        }
+        $flight = $book->getRelated('flight');
+        $user = $book->getRelated('user');
+        if($flight === null)
+        {
+            $this->render('fnotfound');
+            return;
+        }
+        $ta = $flight->getTurnaround();
+        
+        $this->render('bdetails', array('flight' => $flight, 'ta' => $ta, 'user' => $user));
+    }
     
     public function filters()
     {
