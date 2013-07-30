@@ -28,6 +28,15 @@ class SlotreserveModel extends CActiveRecord
     {
         return array(
             'slot' => array(self::BELONGS_TO, 'SlotModel', 'slotid'),
+            'user' => array(self::BELONGS_TO, 'UserModel', 'userid'),
+        );
+    }
+    
+    public function rules()
+    {
+        return array(
+            array('userid, slotid, airport, arrival', 'required'),
+            array('airport', 'length', 'min' => 4, 'max' => 4),
         );
     }
 }

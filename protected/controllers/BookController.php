@@ -119,6 +119,71 @@ class BookController extends CController
         $this->render('bdetails', array('flight' => $flight, 'ta' => $ta, 'user' => $user));
     }
     
+    public function actionSlotreserve($slotid)
+    {
+        $slot = SlotModel::model()->findBypk($slotid);
+        if($slot === null)
+        {
+            $this->render('snotfound');
+            return;
+        }
+        $this->render('sreserve', array('slotid' => $slotid, 'slottime' => $slot->time));
+    }
+        
+    public function actionSlotregister($slotid)
+    {
+        $slot = SlotModel::model()->findBypk($slotid);
+        if($slot === null)
+        {
+            $this->render('snotfound');
+            return;
+        }
+        $sb = $slot->getBooking();
+        if($sb != null)
+        {
+            $this->render('salreadybooked', array('bookid' => $sb->id));
+            return;
+        }
+        else
+        {
+            $slr = new SlotreserveModel;
+            $slr->userid = Yii::app()->user->getId();
+            $slr->slotid = $slotid;
+            $slr->airport = $_POST['airport'];
+            if(isset($_POST['arrival']))
+            {
+                $arr = 1;
+            }
+            else
+            {
+                $arr = 0;
+            }
+            $slr->arrival = $arr;
+            if(!$slr->validate())
+            {
+                $this->render('svalidateerror');
+            }
+            else
+            {
+                $ap = $slot->getRelated('airport');
+                $api = ($ap === null) ? '' : $ap->icao;
+                if(($api == $slr->airport))
+                {
+                    $this->render('sddire');
+                    return;
+                }
+                if(!$slr->save())
+                {
+                    $this->render('sdberror');
+                }
+                else
+                {
+                    $this->render('ssuccess');
+                }
+            }
+        }        
+    }
+    
     public function filters()
     {
         return array(

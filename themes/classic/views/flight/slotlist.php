@@ -27,8 +27,9 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             <?php
             foreach($slots as $value)
             {
+                $booked = $value->getBooking();
                 echo '<tr class="';
-                if($value->getRelated('book') === null)
+                if($booked === null)
                 {
                     echo 'success';
                 }
@@ -36,7 +37,25 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 {
                     echo 'error';
                 }
-                echo '"><td>'.$value->time.'</td><td>Info</td></tr>';
+                echo '"><td>'.$value->time.'</td><td>';
+                if($booked === null)
+                {
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/slotreserve', array('slotid' => $value->id)).'" class="btn btn-success">Reserve</a>';
+                }
+                else
+                {
+                    $usr = $booked->getRelated('user');
+                    if($usr != null)
+                    {
+                        $name = $usr->vid;
+                    }
+                    else
+                    {
+                        $name = 'Booked details';
+                    };
+                    echo '<a href="'.Yii::app()->createAbsoluteUrl('book/slotdetail', array('reserveid' => $booked->id)).'" class="btn btn-danger">'.$name.'</a>';
+                };
+                echo '</td></tr>';
             }
             ?>
             </tbody>

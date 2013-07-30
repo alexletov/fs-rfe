@@ -31,5 +31,10 @@ class SlotModel extends CActiveRecord
             'book' => array(self::HAS_ONE, 'SlotreserveModel', 'slotid'),
         );
     }
+    
+    public function getBooking()
+    {
+        return SlotreserveModel::model()->find('slotid = :slotid', array(':slotid' => $this->id,));
+    }
 }
 ?>
