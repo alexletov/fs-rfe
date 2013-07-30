@@ -264,6 +264,57 @@ class AdminController extends CController
         }
     }
     
+    public function actionRemoveslot($id)
+    {
+        $slot = SlotModel::model()->findByPk($id);
+        if($slot != null)
+        {
+            $slotdetails = ' airportid: '.$slot->airport.
+                ', arrival: '.$slot->arrival;
+            
+            if($slot->delete())
+            {
+                AdminlogModel::addLog('success', 'Slot '.$id.' removed from database. Slot details: '.$slotdetails);
+                $this->render('sdsuccess', array('id' => $id));
+            }
+            else
+            {
+                AdminlogModel::addLog('error', 'Slot '.$id.' wasn\'t removed from database. database error. Slot details: '.$slotdetails);
+                $this->render('sderror', array('id' => $id, 'type' => 'db'));
+            }
+        }
+        else
+        {
+            AdminlogModel::addLog('error', 'Slot '.$id.' not found in database.');
+            $this->render('sderror', array('id' => $id, 'type' => 'nf'));
+        }        
+    }
+    
+    public function actionRemovereserve($id)
+    {
+        $sr = SlotreserveModel::model()->findByPk($id);
+        if($sr != null)
+        {
+            $uid = $sr->userid;
+            $fid = $sr->slotid;
+            if($sr->delete())
+            {
+                AdminlogModel::addLog('success', 'Slot reservation '.$id.' (userid='.$uid.', slotid='.$fid.') removed from database.');
+                $this->render('rdsuccess', array('id' => $id));
+            }
+            else
+            {
+                AdminlogModel::addLog('error', 'Slot reservation '.$id.' (userid='.$uid.', slotid='.$fid.') wasn\'t removed from database. Database error');
+                $this->render('rderror', array('id' => $id, 'type' => 'db'));
+            }
+        }
+        else
+        {
+            AdminlogModel::addLog('error', 'Slot reservation '.$id.' not found in database.');
+            $this->render('rderror', array('id' => $id, 'type' => 'nf'));
+        }        
+    }
+    
     public function filters()
     {
         return array(

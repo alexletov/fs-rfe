@@ -11,6 +11,7 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
 $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
 ?><div class="row-fluid">
     <div class="well">
+        <h1>Slot details</h1>
         <table class="table">
             <tr>
                 <td>Airport</td>

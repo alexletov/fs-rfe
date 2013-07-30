@@ -9,7 +9,27 @@
 $theme = Yii::app()->theme->name;
 $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/images';
 $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
-?><div class="row-fluid">
+?><?php if($isadmin)
+{ ?>
+<script type="text/javascript">
+    function deleteSlot(id)
+    {
+        if(confirm("Are you sure to delete flight? Note: all your actions will be logged!"))
+        {
+            document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/removeslot'); ?>/id/"+id;
+        }
+    };
+    
+    function deleteReservation(id)
+    {
+        if(confirm("Are you sure to delete booking? Note: all your actions will be logged!"))
+        {
+            document.location.href = "<?php echo Yii::app()->createAbsoluteUrl('admin/removereserve'); ?>/id/"+id;
+        }
+    };
+</script>
+<?php }; ?>
+<div class="row-fluid">
     <div class="well">
         <?php
         if($airport != null)
@@ -21,6 +41,9 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <tr>
                     <th>Slot time</th>
                     <th>Info</th>
+                    <?php if($isadmin) { ?>
+                    <th>Admin</th>    
+                    <?php }; ?>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +78,18 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                     };
                     echo '<a href="'.Yii::app()->createAbsoluteUrl('book/slotdetail', array('reserveid' => $booked->id)).'" class="btn btn-danger">'.$name.'</a>';
                 };
-                echo '</td></tr>';
+                echo '</td>';
+                if($isadmin)
+                {
+                    echo '<td>';
+                    echo '<a data-toggle="tooltip" title="Delete slot" href="javascript:deleteSlot('.$value->id.');"><i class="icon-remove text-error"></i></a>&nbsp;';
+                    if($booked != null)
+                    {
+                        echo '<a data-toggle="tooltip" title="Delete reservation" href="javascript:deleteReservation('.$booked->id.');"><i class="icon-minus-sign text-warning"></i></a>';
+                    }
+                    echo '</td>';
+                }
+                echo '</tr>';
             }
             ?>
             </tbody>
