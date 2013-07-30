@@ -184,6 +184,25 @@ class BookController extends CController
         }        
     }
     
+    public function actionSlotdetail($reserveid)
+    {
+        $slotreserve = SlotreserveModel::model()->findByPk($reserveid);
+        if($slotreserve === null)
+        {
+            $this->render('srnfound');
+            return;
+        }
+        $slot = $slotreserve->getRelated('slot');
+        $user = $slotreserve->getRelated('user');
+        if(($slot == null) || ($user == null))
+        {
+            $this->render('sierror');
+            return;
+        }            
+        $airport = $slot->getRelated('airport');
+        $this->render('sdetails', array('slot' => $slot, 'user' => $user, 'airport' => $airport, 'slotr' => $slotreserve));
+    }
+    
     public function filters()
     {
         return array(
