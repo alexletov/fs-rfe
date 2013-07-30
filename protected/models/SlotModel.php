@@ -32,6 +32,13 @@ class SlotModel extends CActiveRecord
         );
     }
     
+    public function rules()
+    {
+        return array(
+            array('time', 'type', 'type'=>'time', 'timeFormat'=>'hh:mm'),
+        );
+    }    
+    
     public function getBooking()
     {
         return SlotreserveModel::model()->find('slotid = :slotid', array(':slotid' => $this->id,));

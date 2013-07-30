@@ -37,6 +37,7 @@ class SlotreserveModel extends CActiveRecord
         return array(
             array('userid, slotid, airport, arrival', 'required'),
             array('airport', 'length', 'min' => 4, 'max' => 4),
+            array('arrival', 'type', 'type'=>'integer'),
         );
     }
 }

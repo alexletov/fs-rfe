@@ -269,8 +269,7 @@ class AdminController extends CController
         $slot = SlotModel::model()->findByPk($id);
         if($slot != null)
         {
-            $slotdetails = ' airportid: '.$slot->airport.
-                ', arrival: '.$slot->arrival;
+            $slotdetails = ' slottime: '.$slot->time;
             
             if($slot->delete())
             {
@@ -313,6 +312,58 @@ class AdminController extends CController
             AdminlogModel::addLog('error', 'Slot reservation '.$id.' not found in database.');
             $this->render('rderror', array('id' => $id, 'type' => 'nf'));
         }        
+    }
+    
+    public function actionAddslot($apt)
+    {
+        if(!(isset($_POST['time'])))
+        {
+            AdminlogModel::addLog('error', 'Add slot fail: not all data recieved.');
+            $this->render('sanodata');
+            return;
+        }
+        $slot = new SlotModel;
+        $slot->airportid = $apt;
+        $slot->time = $_POST['time'];
+        
+        $slotdetails = ' airportid: '.$slot->airportid.
+                ', time: '.$slot->time;
+        
+        $airport = AirportModel::model()->findByPk($apt);
+        if($airport === null)
+        {
+            $error = 'Airport doesn\'t exists in database.';
+            AdminlogModel::addLog('error', 'Couldn\'t save new slot. Slot details:'.
+                $slotdetails.
+                '. Error details: '.$error);
+            $this->render('saerror', array('error' => $error));
+            return;
+        }
+        
+        if(!$slot->validate())
+        {
+            $error = $slot->getErrors();
+            AdminlogModel::addLog('error', 'Couldn\'t save new slot. Validation error. Slot details:'.
+                $slotdetails.
+                '. Error details: '.var_export($error, true));
+            $this->render('saerror', array('error' => $error, true));
+            return;
+        }
+        
+        if($slot->save())
+        {
+            AdminlogModel::addLog('success', 'Slot successfully added: id '.$slot->id.'. Slot details:'.
+                $slotdetails);
+            $this->render('sasuccess');
+        }
+        else
+        {
+            $error = 'Database error.';
+            AdminlogModel::addLog('error', 'Couldn\'t save new slot. Database error. Slot details:'.
+                $slotdetails.
+                '.');
+            $this->render('saerror', array('error' => $error));
+        }  
     }
     
     public function filters()

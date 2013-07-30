@@ -94,5 +94,37 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
             ?>
             </tbody>
         </table>
+        <?php
+        if($isadmin)
+        {
+        ?>
+        <?php echo CHtml::scriptFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/js/jquery.ui.timepicker.js'); ?>
+        <?php echo CHtml::cssFile(Yii::app()->getBaseUrl(true).'/public/themes/'.$theme.'/styles/jquery.ui.timepicker.css'); ?>
+        <script type="text/javascript">
+        $(function() {
+            $("#time").timepicker({                
+                hours: {
+                    starts: 0,                
+                    ends: 23                  
+                },
+                minutes: {
+                    starts: 0,                
+                    ends: 55,                 
+                    interval: 5               
+                },
+            });
+        });
+        </script>
+        <form action="<?php echo Yii::app()->createAbsoluteUrl('admin/addslot', array('apt' => $airport->id)); ?>" method="post" class="form-inline">
+            <fieldset>
+                <input type="text" name="time" id="time" maxlength="8" placeholder="Slot time" />
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-ok"></i>&nbsp;Add
+                </button>
+            </fieldset>
+        </form>
+        <?php
+        };
+        ?>
     </div>
 </div>
