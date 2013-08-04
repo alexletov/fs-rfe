@@ -7,7 +7,14 @@
  * User controller.
  */
 class UserController extends CController
-{ 
+{
+    public function actionMyreserved()
+    {
+        $userid = Yii::app()->user->getId();
+        $flights = BookModel::model()->findAll('userid = :userid', array(':userid' => $userid));
+        $slots = SlotreserveModel::model()->findAll('userid = :userid', array(':userid' => $userid));
+        $this->render('list', array('flights' => $flights, 'slots' => $slots));
+    }
     
     public function filters()
     {
