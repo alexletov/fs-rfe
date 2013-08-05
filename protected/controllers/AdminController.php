@@ -23,6 +23,10 @@ class AdminController extends CController
             $fid = $booking->flightid;
             if($booking->delete())
             {
+                if(file_exists(Yii::app()->getBasePath().'/images/boardingpass/f'.$id.'.png'))
+                {
+                    unlink(Yii::app()->getBasePath().'/images/boardingpass/f'.$id.'.png');
+                }
                 AdminlogModel::addLog('success', 'Booking '.$id.' (userid='.$uid.', flightid='.$fid.') removed from database.');
                 $this->render('bdsuccess', array('id' => $id));
             }
@@ -42,6 +46,14 @@ class AdminController extends CController
     public function actionRemoveflight($id)
     {
         $flight = FlightModel::model()->findByPk($id);
+        $book = $flight->getBooking();
+        if($book != NULL)
+        {
+            if(file_exists(Yii::app()->getBasePath().'/images/boardingpass/f'.$book->id.'.png'))
+            {
+                unlink(Yii::app()->getBasePath().'/images/boardingpass/f'.$book->id.'.png');
+            }
+        }
         if($flight != null)
         {
             $fltdetails = ' airportid: '.$flight->airportid.

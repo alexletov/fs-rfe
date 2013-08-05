@@ -33,7 +33,7 @@ return array(
             'showScriptName'=>false,
             'caseSensitive'=>false,
         ),
-        'log' => array (
+        /*'log' => array (
             'class'  => 'system.logging.CLogRouter',
             'routes' => array (
                 array (
@@ -41,7 +41,7 @@ return array(
                     'levels' => 'error, warning, trace, info',
                 ),
             ),
-        ),
+        ),*/
         'session' => array(
             'autoStart'=>true,
         ),

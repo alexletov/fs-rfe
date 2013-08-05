@@ -31,7 +31,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
     <div class="well">
         <h1>Reservations for <?php echo Yii::app()->user->firstname.' '.Yii::app()->user->lastname; ?></h1>
         <h2>Flight booking</h2>
-        <?php if($flights === null) { ?>
+        <?php if(($flights === null) || empty($flights)) { ?>
             No flight booking found!
         <?php } else { ?>
             <table class="table table-hover">
@@ -71,6 +71,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 <td>
                 <?php
                     echo '<a href="'.Yii::app()->createAbsoluteUrl('book/details', array('booking' => $value->id)).'" class="btn btn-success">Details</a>';
+                    echo '&nbsp;<a href="'.Yii::app()->createAbsoluteUrl('user/bp', array('booking' => $value->id)).'" class="btn btn-warning">Boarding pass</a>';
                     echo '&nbsp;<a href="javascript:deleteBooking('.$value->id.');" class="btn btn-danger">Cancel</a>';
                 ?>
                 </td>
@@ -80,7 +81,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
         </table>
         <?php }; ?>
         <h2>Slot reservation</h2>
-        <?php if($slots === null) { ?>
+        <?php if(($slots === null) || empty($slots)) { ?>
             No slot reservation found!
         <?php } else { ?>
         <table class="table table-hover">
@@ -103,7 +104,7 @@ $isadmin = UserModel::isAdmin(Yii::app()->user->getId());
                 $apt = $val->getRelated('airport');
             ?>
             <tr>
-                <td><?php echo $apt == null ? $apt->icao : ''; ?></td>
+                <td><?php echo $apt != null ? $apt->icao : ''; ?></td>
                 <td><?php echo $val->time; ?></td>
                 <td>
                 <?php
