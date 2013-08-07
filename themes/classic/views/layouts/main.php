@@ -25,13 +25,24 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
 </head>
 <body>
     <div class="container main-part">
-        <div>
-            <div style="text-align:center">
-                <h1 class="muted" >
+        <div class="row">
+          <div class="col-12 col-lg-8">
+            <div class="pull-left">
+                <h1 class="text-muted" >
                     <?php echo CHtml::image($image_url.'/images/logo.png'); ?>
-                    Moscow RFE 2013 booking system
+                    Moscow RFE 2013
                 </h1>
-            </div>
+            </div></div>
+           <div class="col-6 col-lg-4">
+           <?php if(!Yii::app()->user->isGuest) { ?>
+           <div class="login_form">
+                <?php $this->widget('LoginWidget'); ?>
+           </div>
+           <?php }; ?>
+           
+           
+           </div>
+          </div>
             <div class="navbar center">
                 <div class="navbar-inner pullcenter">
                     <?php $this->widget('MenuWidget', array('menu' => 'main')); ?>
@@ -39,13 +50,13 @@ $image_url = Yii::app()->getBaseUrl(true).'/public/themes/'.$theme;
             </div>
 
             <?php echo $content; ?>
-        </div>      
+            
         <div class="well ">
             <div>
                 <strong>&copy; 2013, <a href="http://ru.ivao.aero" target="_blank">IVAO Russian Division</a></strong><br>
-                <a href="http://twitter.com/#!/IVAORU" target="_blank"><i class="icon-twitter icons-soc"></i></a>
-                <a href="http://www.facebook.com/groups/365423953473360/" target="_blank"><i class="icon-facebook icons-soc"></i></a>
-                <a href="http://vk.com/ivaorus" target="_blank"><i class="icon-vk icons-soc"></i></a>
+                <a href="http://twitter.com/#!/IVAORU" target="_blank" class="icon-twitter icons-soc"></a>
+                <a href="http://www.facebook.com/groups/365423953473360/" target="_blank" class="icon-facebook icons-soc"></a>
+                <a href="http://vk.com/ivaorus" target="_blank" class="icon-vk icons-soc"></a>
             </div>
             <div>
             </div>
