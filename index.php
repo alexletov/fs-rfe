@@ -6,9 +6,9 @@
  * 
  * Yii enter file.
  */
-defined('YII_DEBUG') or define('YII_DEBUG', true);
+#defined('YII_DEBUG') or define('YII_DEBUG', true);
 
-error_reporting(E_ALL);
+#error_reporting(E_ALL);
 
 require_once('framework/yii.php');
 
