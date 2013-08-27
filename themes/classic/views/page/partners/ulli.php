@@ -27,31 +27,23 @@
         </td>
         <td width="25%">
             <p>
-                <a href="http://ivaoru.org/sites/default/files/charts/ulli.pdf" target="_blank">
-                    <button type="button" class="btn btn-success btn-block">
-                        Download charts
-                    </button>
+                <a href="http://ivaoru.org/sites/default/files/charts/ulli.pdf" target="_blank" class="btn btn-success btn-block">
+                    Download charts
                 </a>
             </p>
             <p>
-                <a href="http://ivaoru.org/sites/default/files/scenery_files/ULLI_fs2004.zip" target="_blank">
-                    <button type="button" class="btn btn-primary btn-block">
-                        Download scenery (FS9)
-                    </button>
+                <a href="http://ivaoru.org/sites/default/files/scenery_files/ULLI_fs2004.zip" target="_blank" class="btn btn-primary btn-block">
+                    Download scenery (FS9)
                 </a>
             </p>
             <p>
-                <a href="http://ivaoru.org/sites/default/files/scenery_files/ULLI_fsx.zip" target="_blank">
-                    <button type="button" class="btn btn-primary btn-block">
-                        Download scenery (FSX)
-                    </button>
+                <a href="http://ivaoru.org/sites/default/files/scenery_files/ULLI_fsx.zip" target="_blank" class="btn btn-primary btn-block">
+                    Download scenery (FSX)
                 </a>
             </p>
             <p>
-                <a href="http://x-airways.ru/va/modules/wfdownloads/singlefile.php?cid=16&lid=222" target="_blank">
-                    <button type="button" class="btn btn-primary btn-block">
-                        Download scenery (X-Plane)
-                    </button>
+                <a href="http://x-airways.ru/va/modules/wfdownloads/singlefile.php?cid=16&lid=222" target="_blank" class="btn btn-primary btn-block">
+                    Download scenery (X-Plane)
                 </a>
             </p>
         </td>

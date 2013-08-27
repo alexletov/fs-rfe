@@ -1,49 +1,46 @@
 <?php
-/**
- * @file uwgg.php
- * 
- * @autor Alex Letov
- * 
- * Partners UWGG view.
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 ?>
 <table>
     <tr>
         <td colspan="3">
             <div class="text-right"><button type="button" class="btn btn-warning">Alternate</button></div>
-            <h1>Nizhny Novgorod International Airport (UWGG/GOJ)</h1>
+            <h1>Minsk National Airport (UMMS/MSQ)</h1>
         </td>
     </tr>
     <tr>
         <td width="25%">
-            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Nizhnijnowgorod_airport.JPG/220px-Nizhnijnowgorod_airport.JPG" alt="UWGG airport" />
+            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/15/MINSK-Airport-1000-278768.jpg/220px-MINSK-Airport-1000-278768.jpg" alt="UMMS airport" />
         </td>
         <td>
-            <h3>Elevation: 256 ft / 78 m<br />
-            TA: 800 m / TL: FL50</h3>
+            <h3>Elevation: 669 ft / 204 m<br />
+            TA: 6000' / TL: By ATC</h3>
             <p>
-                Nizhny Novgorod International Airport is the international airport serving the city of Nizhny Novgorod, Russia. It is located on the outskirts of the city's Avtozavodsky District, 14 km southwest of city centre. It was founded in 1936.<br />
-                The civil terminal offers a very large apron that can accommodate 44 aircraft. The airfield supports 24-hour flight operations, several Ministry of Interior Ilyushin Il-76 aircraft are based here.
+                Minsk National Airport former name Minsk-2 (not to be confused with Minsk-1 Airport in Minsk downtown), is the main international airport in Belarus, located 42 km (26 mi) to the east of the capital Minsk, geographically lying in the territory of Smalyavichy Raion, but administratively being subordinated to Kastrychnitski District of Minsk.
             </p>
         </td>
         <td width="25%">
             <p>
-                <a href="http://ivaoru.org/sites/default/files/charts/uwgg.pdf" target="_blank" class="btn btn-success btn-block">
+                <a href="http://belavia.info/files/charts/umms.zip" target="_blank" class="btn btn-success btn-block">
                     Download charts
                 </a>
             </p>
             <p>
-                <a href="http://ivaoru.org/sites/default/files/scenery_files/UWGG_fs2004.zip" target="_blank" class="btn btn-primary btn-block">
+                <a href="http://belavia.info/files/scenery/beta/UMMS_V9.1b.rar" target="_blank" class="btn btn-primary btn-block">
                     Download scenery (FS9)
                 </a>
             </p>
             <p>
-                <a href="http://ivaoru.org/sites/default/files/scenery_files/UWGG_fs2004.zip" target="_blank" class="btn btn-primary btn-block">
+                <a href="http://belavia.info/files/scenery/umms_fsx.rar" target="_blank" class="btn btn-primary btn-block">
                     Download scenery (FSX)
                 </a>
             </p>
             <p>
-                <a href="http://ivaoru.org/sites/default/files/scenery_files/UWGG_xplane.zip" target="_blank" class="btn btn-primary btn-block">
+                <a href="http://belavia.info/files/scenery/x-plane/UMMS_Minsk-2.zip" target="_blank" class="btn btn-primary btn-block">
                     Download scenery (X-Plane)
                 </a>
             </p>
@@ -66,21 +63,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>18</td>
-                        <td>9203 ft / 2805 m</td>
-                        <td>180&deg;</td>
-                        <td>256'</td>
+                        <td>13</td>
+                        <td>11946 ft / 3641 m</td>
+                        <td>131&deg;</td>
+                        <td>640'</td>
                         <td><i class="icon-ok"></i></td>
-                        <td>109.9</td>
+                        <td>108.9</td>
                         <td>3.00&deg;</td>
                     </tr>
                     <tr>
-                        <td>36</td>
-                        <td>9203 ft / 2805 m</td>
-                        <td>360&deg;</td>
-                        <td>254'</td>
+                        <td>31</td>
+                        <td>11946 ft / 3641 m</td>
+                        <td>311&deg;</td>
+                        <td>670'</td>
                         <td><i class="icon-ok"></i></td>
-                        <td>109.5</td>
+                        <td>109.7</td>
                         <td>3.00&deg;</td>
                     </tr>
                 </tbody>
@@ -100,10 +97,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="http://www.gcmap.com/map?P=UWGG-UUWW&MS=wls&amp;MR=180&MX=430x430&PM=b:disc7%2b%22%25i%25+%28N%22%22" />
+                        <img src="http://www.gcmap.com/map?P=UMMS-UUWW&MS=wls&amp;MR=180&MX=430x430&PM=b:disc7%2b%22%25i%25+%28N%22%22" />
                     </td>
                     <td class="text-right">
-                        <img src="//api-maps.yandex.ru/services/constructor/1.0/static/?sid=_9W2qXTPqsL7USuJjWWXDqvpIxMKxpI-&width=600&height=450" alt=""/>
+                        <img src="//api-maps.yandex.ru/services/constructor/1.0/static/?sid=QsP8vxQMWsowQ-OnW9SN-esKYIN9WuNP&width=600&height=450" alt=""/>
                     </td>
                 </tr>
             </table>

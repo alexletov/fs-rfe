@@ -27,30 +27,24 @@
         </td>
         <td width="25%">
             <p>
-                <a href="http://www.ivaotr.org/v5/charts/charts.php" target="_blank">
-                    <button type="button" class="btn btn-success btn-block">
-                        Download charts
-                    </button>
+                <a href="http://www.ivaotr.org/v5/charts/charts.php" target="_blank" class="btn btn-success btn-block">
+                    Download charts
                 </a>
             </p>
             <p>
-                <a href="http://www.ivaotr.org/v5/resources/getscenery.php?id=44" target="_blank">
-                    <button type="button" class="btn btn-primary btn-block">
-                        Download scenery (FS9)
-                    </button>
+                <a href="http://www.ivaotr.org/v5/resources/getscenery.php?id=44" target="_blank" class="btn btn-primary btn-block">
+                    Download scenery (FS9)
                 </a>
             </p>
             <p>
-                <a href="http://www.ivaotr.org/v5/resources/getscenery.php?id=43" target="_blank">
-                    <button type="button" class="btn btn-primary btn-block">
-                        Download scenery (FSX)
-                    </button>
+                <a href="http://www.ivaotr.org/v5/resources/getscenery.php?id=43" target="_blank" class="btn btn-primary btn-block">
+                    Download scenery (FSX)
                 </a>
             </p>
             <p>
-                    <button type="button" class="btn btn-primary btn-block" disabled="disabled">
-                        Download scenery (X-Plane)
-                    </button>
+                <button type="button" class="btn btn-primary btn-block" disabled="disabled">
+                    Download scenery (X-Plane)
+                </button>
             </p>
         </td>
     </tr>

@@ -22,5 +22,18 @@ class PageController extends CController
     {
         $this->render('briefing');
     }
+    
+    public function actionProgress()
+    {
+        $flc = FlightModel::model()->count();
+        $bc = BookModel::model()->count();
+        $progress = $bc / $flc;
+        
+        $slc = SlotModel::model()->count();
+        $sc = SlotreserveModel::model()->count();
+        
+        $sprogress = $sc / $slc;
+        $this->render('progress', array('progress' => $progress, 'sprogress' => $sprogress));
+    }
 }
 ?>

@@ -19,6 +19,8 @@ $an = Yii::app()->controller->action->id;
     <li<?php if(($cn == 'page') && ($an == 'atc')) { ?> class="active" <?php }; ?>><?php echo CHtml::link('ATC', Yii::app()->createAbsoluteUrl('page/atc')); ?></li>
     
     <li<?php if(($cn == 'page') && ($an == 'partners')) { ?> class="active" <?php }; ?>><?php echo CHtml::link('Partners', Yii::app()->createAbsoluteUrl('page/partners')); ?></li>                         
+    
+    <li<?php if(($cn == 'page') && ($an == 'progress')) { ?> class="active" <?php }; ?>><?php echo CHtml::link('Progress', Yii::app()->createAbsoluteUrl('page/progress')); ?></li>                         
     <?php if(!Yii::app()->user->isGuest)
     { ?>
     <li<?php if($cn == 'user') { ?> class="active" <?php }; ?>><?php echo CHtml::link('My reservations', Yii::app()->createAbsoluteUrl('user/myreserved')); ?></li>
