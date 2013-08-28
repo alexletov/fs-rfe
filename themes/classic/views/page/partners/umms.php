@@ -1,14 +1,16 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file umms.php
+ * 
+ * @autor Alex Letov
+ * 
+ * Partners UMMS view.
  */
 ?>
 <table>
     <tr>
         <td colspan="3">
-            <div class="text-right"><button type="button" class="btn btn-warning">Alternate</button></div>
+            <div class="text-right"><button type="button" class="btn btn-info">Partner</button></div>
             <h1>Minsk National Airport (UMMS/MSQ)</h1>
         </td>
     </tr>
@@ -18,14 +20,14 @@
         </td>
         <td>
             <h3>Elevation: 669 ft / 204 m<br />
-            TA: 6000' / TL: By ATC</h3>
+            TA: 6000 ft / TL: By ATC</h3>
             <p>
                 Minsk National Airport former name Minsk-2 (not to be confused with Minsk-1 Airport in Minsk downtown), is the main international airport in Belarus, located 42 km (26 mi) to the east of the capital Minsk, geographically lying in the territory of Smalyavichy Raion, but administratively being subordinated to Kastrychnitski District of Minsk.
             </p>
         </td>
         <td width="25%">
             <p>
-                <a href="http://belavia.info/files/charts/umms.zip" target="_blank" class="btn btn-success btn-block">
+                <a href="http://www.ban.by/images/eAIP/AD/UM-AD-2.UMMS-en-GB.pdf" target="_blank" class="btn btn-success btn-block">
                     Download charts
                 </a>
             </p>

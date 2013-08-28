@@ -8,7 +8,7 @@
 <table>
     <tr>
         <td colspan="3">
-            <div class="text-right"><button type="button" class="btn btn-warning">Alternate</button></div>
+            <div class="text-right"><button type="button" class="btn btn-info">Partner</button></div>
             <h1>Kurumoch International Airport (UWWW/KUF)</h1>
         </td>
     </tr>

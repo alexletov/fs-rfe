@@ -33,7 +33,7 @@
                                 <td>Moscow Approach</td>
                             </tr>
                             <tr>
-                                <td>UMSK_1_APP</td>
+                                <td>UMSK_2_APP</td>
                                 <td>128.0</td>
                                 <td>Moscow Approach</td>
                             </tr>
@@ -85,12 +85,12 @@
                             </tr>
                             <tr>
                                 <td>UUEE_DEL</td>
-                                <td>123.6</td>
-                                <td>Sheremetyevo Apron</td>
+                                <td>120.875</td>
+                                <td>Sheremetyevo Delivery</td>
                                 <td></td>
                                 <td>UUWW_DEL</td>
                                 <td>131.12</td>
-                                <td>Vnukovo Ground</td>
+                                <td>Vnukovo Delivery</td>
                             </tr>
                         </tbody>
                     </table>
