@@ -3,4 +3,4 @@ fs-rfe
 
 CMS for build your own booking system for virtual Real Flight Event.
 
-NetBeans project added.
+Copyright (c) 2013, Vasilii Aleksandrov (aka Alex Letov)
