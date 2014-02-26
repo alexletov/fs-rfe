@@ -27,12 +27,12 @@ class PageController extends CController
     {
         $flc = FlightModel::model()->count();
         $bc = BookModel::model()->count();
-        $progress = $bc / $flc;
+        $progress = $flc ? $bc / $flc : 0;
         
         $slc = SlotModel::model()->count();
         $sc = SlotreserveModel::model()->count();
         
-        $sprogress = $sc / $slc;
+        $sprogress = $slc ? $sc / $slc : 0;
         $this->render('progress', array('progress' => $progress, 'sprogress' => $sprogress));
     }
 }
