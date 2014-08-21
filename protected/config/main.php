@@ -50,6 +50,7 @@ return array(
     'params' => array(
         'api_url' => 'http://login.ivao.aero/api.php',
         'login_url' => 'http://login.ivao.aero/index.php',
+        'use_gd' => true,
     ),
 );
 ?>
